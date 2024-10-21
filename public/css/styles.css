@@ -1,0 +1,186 @@
+body {
+    background-color: #F4E8D4;
+}
+.custom-navbar {
+    background-color: #C8B891;
+}
+
+.custom-login {
+    background-color: #000000; /* Hitam */
+    color: white;
+    border-radius: 10px;
+    padding: 10px 30px !important; /* Menggunakan !important */
+    text-align: center;
+    margin-right: 10px;
+    font-family: 'Poppins', sans-serif; /* Pastikan font sudah terhubung */
+    font-weight: 600;
+}
+
+
+.custom-register {
+    background-color: #3C3C3C; /* Abu-abu */
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px !important; /* Menggunakan !important */ 
+    text-align: center;
+    margin-left: 10px; /* Jika diperlukan untuk spasi */
+    font-family: 'Poppins', sans-serif; /* Font yang sama */
+    font-weight: 600;
+}
+
+.ph1 {
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-title{
+    font-family: 'Poppins', sans-serif; /* Font yang sama */
+    font-weight: 600;
+}
+
+.custom-login-btn{
+    background-color: #3C3C3C; /* Abu-abu */
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px !important; /* Menggunakan !important */ 
+    text-align: center;
+    margin-left: 10px; /* Jika diperlukan untuk spasi */
+    font-family: 'Poppins', sans-serif; /* Font yang sama */
+    font-weight: 600;
+}
+
+.display-4{
+    font-family: 'Poppins', sans-serif; /* Font yang sama */
+    font-weight: 600;
+    color: #6C5A3B;
+    font-size: 70px;
+}
+
+.display-5{
+    font-family: 'Poppins', sans-serif; /* Font yang sama */
+    font-weight: 600;
+    color: #3C3C3C;
+}
+
+.costume-section{
+    padding-top: 100px;
+    padding-bottom: 50px;
+}
+
+.loginp{
+    padding-top: 50px;
+}
+
+.custome-shape1{
+    padding: 0.75rem;
+    border-radius: 20px;
+}
+
+.ph-arrow{
+    font-size: 60px;
+    color: black;
+}
+
+.navbar-brand{
+    color: white;
+    font-family: 'Poppins', sans-serif; /* Font yang sama */
+    font-weight: 600;
+    background-image: asset('images/logo.png');
+}
+
+.modal-content {
+    border-radius: 30px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Warna latar belakang form */
+}
+
+.modal-header {
+    display: flex;
+    justify-content: center;
+    border-bottom: none;
+}
+
+.modal-header img {
+    max-height: 50px;
+}
+
+.modal-body h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.form-control {
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #f0f5ff;
+    border: 1px solid #e2e6ea;
+    box-shadow: none;
+}
+
+.form-control:focus {
+    border-color: #e2e6ea;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 18px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.text-secondary {
+    color: #6c757d;
+}
+
+.text-secondary:hover {
+    color: #343a40;
+    
+}
+
+.account-teks{
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif; /* Pastikan font sudah terhubung */
+    font-weight: 600;
+}
+
+input[type="password"] {
+    box-sizing: border-box;
+}
+
+.alert-custom {
+    background-color: #f8d7da; /* Warna latar belakang */
+    color: #721c24; /* Warna teks */
+    border: 1px solid #f5c6cb; /* Warna border */
+    border-radius: 5px;
+    padding: 15px;
+    position: relative;
+}
+
+.alert-custom ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.alert-custom li {
+    list-style-type: none;
+}
+
+.alert-custom .btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: #721c24;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
