@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Pickup
     Route::get('/pickup', [PickupController::class, 'index'])->name('pickup.index');
-
+ // Pickup
     // Vouchers
     Route::get('/vouchers', [VoucherController::class, 'index'])->name('vouchers.index');
     Route::get('/vouchers/create', [VoucherController::class, 'create'])->name('vouchers.create');
