@@ -5,10 +5,12 @@ body {
     background-color: #C8B891;
 }
 
+/*LANDING START*/
+
 .custom-login {
     background-color: #000000; /* Hitam */
     color: white;
-    border-radius: 10px;
+    border-radius: 10px;    
     padding: 10px 30px !important; /* Menggunakan !important */
     text-align: center;
     margin-right: 10px;
@@ -62,6 +64,7 @@ body {
     font-family: 'Poppins', sans-serif; /* Font yang sama */
     font-weight: 600;
     color: #3C3C3C;
+    font-size: 70px;
 }
 
 .costume-section{
@@ -182,5 +185,225 @@ input[type="password"] {
     color: #721c24;
     font-size: 1.5rem;
     cursor: pointer;
+}
+/*LANDING END*/
+
+
+/* DASHBOARD START */
+.main-content {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.sidebar {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 8px;
+    height: 100vh;
+    margin-left: 158px;
+   
+}
+
+.sidebar h3 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.sidebar .nav-link {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-decoration: none;
+}
+
+.sidebar .nav-link:hover {
+    color: #007bff;
+}
+
+/* Atur lebar khusus untuk card */
+.custom-card-width {
+    width: 50%; /* Sesuaikan nilai dengan kebutuhan Anda */
+}
+
+
+.table-container {
+    max-height: 800px;
+    overflow-y: auto;
+    border-radius: 30px;
+    background-clip: padding-box; /* Membuat background mengikuti padding */
+    border: 1px solid #000000;
+}
+
+
+/* Border di antara setiap kolom data */
+.table.table-bordered td, 
+.table.table-bordered th {
+    border-right: 1px solid #000000; /* Pemisah vertikal antar kolom */
+}
+
+/* Hapus border di kolom terakhir untuk tampilan bersih */
+.table.table-bordered td:last-child, 
+.table.table-bordered th:last-child {
+    border-right: none;
+}
+
+/* Styling tabel */
+.table.table-bordered {
+    margin: 0; /* Menghapus margin default dari tabel */
+    background-color: inherit;
+    border: none; /* Menghilangkan border tabel asli */
+}
+
+
+/* Warna background header tabel */
+.table.table-bordered th {
+    background-color: rgba(255, 255, 255, 0.5); /* Putih dengan opacity 50% */
+}
+
+.custom-logout{
+    background-color: #000000; /* Hitam */
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px !important; /* Menggunakan !important */
+    text-align: center;
+    margin-right: 10px;
+    font-family: 'Poppins', sans-serif; /* Pastikan font sudah terhubung */
+    font-weight: 600;
+    display: flex; /* Mengaktifkan Flexbox */
+    align-items: center; /* Memusatkan ikon secara vertikal */
+    
+}
+
+/* Styling untuk card dengan border-radius */
+.custom-card-radius {
+    border-radius: 30px; /* Atur nilai sesuai kebutuhan */
+
+}
+
+.ph.ph-sign-out {
+    font-size: 20px; /* Mengatur ukuran font ikon */
+    color: white; /* Mengubah warna ikon ke putih */   
+}
+.icon-container {
+    text-align: center;
+    margin-bottom: 10px; /* Jarak antara ikon dan elemen di bawahnya (Admin Panel) */
+}
+
+.ph.ph-user-circle {
+    font-size: 80px; /* Ukuran ikon */
+    color: #333; /* Warna ikon */
+}
+
+.username-container {
+    display: block; /* Mengubah dari inline-block ke block */
+    padding: 8px 16px; /* Mengatur jarak dalam elemen */
+    margin-top: 10px; /* Jarak antara ikon dan teks username */
+    background-color: #D9D9D9; /* Background hitam */
+    color: #000000; /* Teks warna putih */
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.search-form {
+    margin-top: 100px; /* Sesuaikan nilai ini */
+   
+}
+
+.custom-search {
+    border-radius: 10px; /* Atur border-radius sesuai kebutuhan */
+    width: 400px; /* Atur lebar sesuai keinginan */
+    max-width: 100%; /* Agar responsif pada layar kecil */
+    border: 2px solid #000000; /* Warna border, misalnya biru */
+    padding: 8px; /* Tambahkan padding agar lebih nyaman */
+}
+
+/*LANDING END*/
+
+/*VOUCHER NEW START*/
+/* Form Container */
+.form-container {
+    max-width: 1200px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Title */
+.form-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    ont-family: 'Poppins', sans-serif; /* Pastikan font sudah terhubung */
+    font-weight: 700;
+}
+
+/* Input Fields */
+.custom-input {
+    border-radius: 8px;
+    border: 1px solid #000000;
+    padding: 10px;
+}
+
+/* Button Styles */
+.custom-button {
+    width: auto; /* Agar tombol hanya sebesar teks */
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+.custom-button.btn-primary {
+    background-color: #000000;
+    color: white;
+}
+
+.custom-button.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.custom-button.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.custom-button.btn-secondary:hover {
+    background-color: #5a6268;
+}
+/*VOUCHER NEW END*/
+
+/*VOUCHER DASHBOARD START*/
+.table {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
 }
 

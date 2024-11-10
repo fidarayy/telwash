@@ -16,8 +16,11 @@ return new class extends Migration
             $table->unsignedBigInteger('transaction_id');  // Foreign key ke tabel Transactions
             $table->enum('status', ['diterima', 'diproses', 'selesai', 'diambil']);  // Status pesanan laundry
             $table->enum('payment_status', ['success', 'pending', 'failed'])->default('pending');  // Status pembayaran, default 'pending'
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'))->onUpdate(DB::raw('CURRENT_TIMESTAMP'));  // Waktu update otomatis
-            $table->foreign('transaction_id')->references('transaction_id')->on('transactions')->onDelete('cascade');  // Foreign key dengan ON DELETE CASCADE
+            $table->timestamp('finished_at')->nullable();  // Kolom finished_at untuk tanggal selesai
+            $table->timestamps();  // Kolom created_at dan updated_at otomatis
+    
+            // Foreign key constraint dengan onDelete cascade
+            $table->foreign('transaction_id')->references('transaction_id')->on('transactions')->onDelete('cascade');
         });
     }
     
@@ -27,5 +30,5 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('orders');
-    }    
+    }
 };

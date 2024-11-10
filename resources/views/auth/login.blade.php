@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Landing Page - Laundry Service</title>
+    <title>Dashboard</title>
     <!-- Link ke Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Link ke custom CSS -->
@@ -12,8 +12,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css"
         rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -113,6 +111,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Log In</button>
                     </form>
+
                     <div class="mt-3 text-center">
                         <a href="#" class="text-secondary">Having Problems?</a>
                         <span> | </span>
@@ -185,24 +184,24 @@
     </div>
 
     <!-- Modal Alert -->
-<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="errorModalLabel">Error</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <ul id="errorList">
-          <!-- Error messages will be injected here -->
-        </ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul id="errorList">
+                        <!-- Error messages will be injected here -->
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 
     <!-- Bootstrap JS -->
@@ -224,18 +223,18 @@
         });
     </script>
     <script>
-    @if ($errors->any())
-        var errorMessages = "";
-        @foreach ($errors->all() as $error)
-            errorMessages += "<li>{{ $error }}</li>";
-        @endforeach
-        document.getElementById("errorList").innerHTML = errorMessages;
-        var errorModal = new bootstrap.Modal(document.getElementById('errorModal'), {
-            keyboard: false
-        });
-        errorModal.show();
-    @endif
-</script>
+        @if ($errors->any())
+            var errorMessages = "";
+            @foreach ($errors->all() as $error)
+                errorMessages += "<li>{{ $error }}</li>";
+            @endforeach
+            document.getElementById("errorList").innerHTML = errorMessages;
+            var errorModal = new bootstrap.Modal(document.getElementById('errorModal'), {
+                keyboard: false
+            });
+            errorModal.show();
+        @endif
+    </script>
 
 
 
