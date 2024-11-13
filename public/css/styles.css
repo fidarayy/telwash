@@ -196,14 +196,65 @@ input[type="password"] {
     border-radius: 8px;
 }
 
+/* Styling untuk ikon dan teks */
+.summary-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Jarak antar item */
+}
+
+.summary-items p {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    flex: 1 1 200px; /* Agar setiap item dapat menyesuaikan */
+}
+
+.summary-items i {
+    font-size: 20px;
+    color: #007bff;
+    margin-right: 8px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .summary-items {
+        flex-direction: column; /* Susun secara vertikal pada layar kecil */
+        align-items: flex-start;
+    }
+
+    .summary-items p {
+        flex: 1 1 auto; /* Set ulang agar item menyesuaikan dengan lebar layar */
+    }
+}
+
+
 .sidebar {
-    background-color: #e9ecef;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     height: 100vh;
-    margin-left: 158px;
+    
    
 }
+
+/* Sidebar styling */
+.sidebar, .offcanvas-body {
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+}
+/* Offcanvas Logout Button */
+.offcanvas-body .btn {
+    border-radius: 10px;
+}
+
 
 .sidebar h3 {
     font-weight: bold;
@@ -213,17 +264,94 @@ input[type="password"] {
 .sidebar .nav-link {
     color: #333;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-top: 10px;
     text-decoration: none;
+    border-top: 1px solid #000000; /* Warna dan ketebalan border atas */
+    margin-right: 8px; /* Jarak antara ikon dan teks */
+    font-size: 20px; /* Atur ukuran ikon sesuai keinginan */
+    vertical-align: middle; /* Pastikan ikon sejajar dengan teks */
+    display: flex; /* Gunakan Flexbox untuk ikon, teks, dan caret */
+    align-items: center; /* Pusatkan konten secara vertikal */
+    justify-content: space-between; /* Jarak antara ikon awal dan caret kanan */
+
+}
+
+.card-body p {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1rem; /* Ukuran font default */
+    margin-bottom: 8px;
+}
+
+.card-body p i {
+    font-size: 20px; /* Ukuran ikon */
+    color: #007bff; /* Warna ikon */
+    margin-right: 8px; /* Jarak antara ikon dan teks */
+}
+
+@media (max-width: 768px) {
+    .card-body {
+        text-align: center; /* Teks di tengah untuk layar kecil */
+    }
+    
+    .card-body p {
+        justify-content: center;
+        font-size: 0.9rem; /* Sedikit lebih kecil di layar kecil */
+    }
+    
+    .card-body p i {
+        font-size: 18px; /* Kurangi ukuran ikon untuk layar kecil */
+    }
+}
+
+.sidebar .nav-link i {
+    font-size: 30px; /* Ukuran ikon */
+    margin-right: 10px; /* Jarak antara ikon dan teks */
+}
+
+.sidebar .nav-link .ph-caret-right {
+    font-size: 20px; /* Ukuran untuk caret kanan */
+}
+/* Hapus border atas pada link pertama dan border bawah pada link terakhir */
+.sidebar .nav-link:first-child {
+    border-top: 1px solid #000000; /* Warna dan ketebalan border atas */
+}
+
+.sidebar .nav-link:last-child {
+    border-top: 1px solid #000000; /* Warna dan ketebalan border atas */
 }
 
 .sidebar .nav-link:hover {
     color: #007bff;
 }
 
+.sidebar.show {
+    transform: translateX(0); /* Tampilkan sidebar saat diaktifkan */
+}
+
+/* Styling untuk logo di bagian bawah sidebar */
+.logo-container {
+    text-align: center; /* Pusatkan logo */
+    padding-top: 200px;
+}
+
+.sidebar-logo {
+    width: 100%; /* Sesuaikan lebar sesuai kebutuhan */
+    max-width: 240px; /* Atur batas maksimum untuk memastikan gambar tidak terlalu besar */
+   
+}
+
 /* Atur lebar khusus untuk card */
 .custom-card-width {
     width: 50%; /* Sesuaikan nilai dengan kebutuhan Anda */
+    background-color: #e9ecef;
+}
+
+@media (max-width: 768px) {
+    .custom-card-width {
+        width: 100%; /* Lebarkan card di tampilan mobile */
+    }
 }
 
 
@@ -233,6 +361,13 @@ input[type="password"] {
     border-radius: 30px;
     background-clip: padding-box; /* Membuat background mengikuti padding */
     border: 1px solid #000000;
+    background-color: rgba(255, 255, 255, 0.164); /* Putih dengan opacity 50% */
+}
+
+.card-title i, .card-body p i {
+    font-size: 20px; /* Ukuran ikon */
+    margin-right: 8px; /* Jarak antara ikon dan teks */
+    vertical-align: middle; /* Sejajarkan ikon dengan teks */
 }
 
 
@@ -310,7 +445,7 @@ input[type="password"] {
 .search-form {
     margin-top: 100px; /* Sesuaikan nilai ini */
    
-}
+}   
 
 .custom-search {
     border-radius: 10px; /* Atur border-radius sesuai kebutuhan */
@@ -320,7 +455,38 @@ input[type="password"] {
     padding: 8px; /* Tambahkan padding agar lebih nyaman */
 }
 
-/*LANDING END*/
+/* Tampilan untuk layar desktop */
+.search-form .search-row {
+    display: flex;
+}
+.btn-primary{
+    width: 100%;
+}
+
+/* Responsif untuk tampilan mobile */
+@media (max-width: 768px) {
+    .search-form {
+        display: flex;
+        flex-direction: column; /* Susun elemen di dalam form secara vertikal */
+        gap: 10px;
+    }
+
+    .search-row {
+        display: flex;
+        flex-direction: row; /* Menjaga input dan dropdown filter dalam satu baris */
+        gap: 10px;
+    }
+
+    .custom-search,
+    .form-select {
+        width: 100%; /* Memastikan input dan filter menggunakan lebar penuh pada mobile */
+    }
+
+    .btn-primary {
+        width: 100%; /* Tombol "Cari" menggunakan lebar penuh pada mobile */
+    }
+}
+/*DASHBOARD END*/
 
 /*VOUCHER NEW START*/
 /* Form Container */
@@ -404,6 +570,137 @@ input[type="password"] {
 
 .btn-danger {
     background-color: #dc3545;
+    color: #6C5A3B;
+}
+
+
+/*USER DASHBOARD START*/
+/* Global styles specific for user dashboard */
+
+h4.user-dashboard-title {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Navbar specific for user dashboard */
+.navbar.user-dashboard {
+    background-color: #343a40;
+}
+
+.navbar-brand.user-dashboard {
+    color: #ffffff !important;
+}
+
+.navbar-brand.user-dashboard:hover {
+    color: #cccccc !important;
+}
+
+.custom-logout.user-dashboard {
+    background-color: #dc3545;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 15px;
+    border: none;
+}
+
+.custom-logout.user-dashboard:hover {
+    background-color: #c82333;
     color: white;
 }
 
+/* Card styles specific for user dashboard */
+.card.user-dashboard {
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title.user-dashboard {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-body.user-dashboard h3 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Table styles specific for user dashboard */
+.table.user-dashboard {
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table.user-dashboard th {
+    background-color: #B5A27F;
+    color: white;
+}
+
+.table.user-dashboard td, .table.user-dashboard th {
+    padding: 15px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Button styles specific for user dashboard */
+.btn.user-dashboard {
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.btn-primary.user-dashboard {
+    background-color: #B5A27F;
+    margin-bottom: 50px;
+    border: none;
+    margin-right: 10px;
+    font-family: 'Poppins', sans-serif; /* Pastikan font sudah terhubung */
+    font-weight: 700;
+}
+
+.btn-primary.user-dashboard:hover {
+    background-color: #000000;
+}
+
+.btn-secondary.user-dashboard {
+    background-color: #6c757d;
+    border: none;
+}
+
+.btn-secondary.user-dashboard:hover {
+    background-color: #5a6268;
+}
+
+/* List styles specific for user dashboard */
+.list-group-item.user-dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+    padding: 10px 20px;
+}
+
+.list-group-item.user-dashboard:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Responsive styles specific for user dashboard */
+@media (max-width: 768px) {
+    .card-body.user-dashboard h3 {
+        font-size: 1.5rem;
+    }
+
+    .btn.user-dashboard {
+        font-size: 0.9rem;
+    }
+
+    .table.user-dashboard td, .table.user-dashboard th {
+        padding: 10px;
+    }
+
+    .list-group-item.user-dashboard {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
