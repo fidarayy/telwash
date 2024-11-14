@@ -12,7 +12,9 @@ use App\Http\Controllers\UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('admin.master_data.transaction.index');  // Mengarahkan ke halaman login
+    // return view('admin.master_data.transaction.index');  // Mengarahkan ke halaman login
+    // return view('customers.index');  // Mengarahkan ke halaman login
+    return view('customers.management');  // Mengarahkan ke halaman login
     // return view('auth.login');  // Mengarahkan ke halaman login
 });
 
@@ -32,7 +34,7 @@ Route::get('/', function () {
 });
 
 
-Route::middleware(['auth'])->group(function () {   
+Route::middleware(['auth'])->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
