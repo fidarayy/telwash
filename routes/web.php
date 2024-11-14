@@ -8,7 +8,7 @@ use App\Http\Controllers\PickupController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\UserDashboardController;
-use App\Models\Transaction;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -66,6 +66,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/orders', [TransactionController::class, 'store'])->name('user.orders.store');
     Route::post('/user/orders/store', [TransactionController::class, 'store'])->name('user.orders.store');
     Route::get('/user/payment/{transaction}', [PaymentController::class, 'show'])->name('user.payment');
+    Route::get('/user/payment/{transaction}', [PaymentController::class, 'show'])->name('user.payment');
+Route::post('/user/payment/{transaction}', [PaymentController::class, 'process'])->name('user.payment.process');
+Route::post('/pickup/{transaction}/accept', [TransactionController::class, 'acceptOrder'])->name('pickup.accept');
+Route::get('/invoice/{id}', [TransactionController::class, 'showInvoice'])->name('user.invoice.show');
+
 
     
 });

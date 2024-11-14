@@ -73,41 +73,42 @@
             <a href="{{ route('user.orders.create') }}" class="btn btn-primary user-dashboard">Pesan Baru</a>
             
         </div>
-        <!-- Order History Table -->
-        <div class="card user-dashboard">
-            <div class="card-body">
-                <h4 class="card-title user-dashboard">Riwayat Pesanan</h4>
-                <table class="table user-dashboard">
-                    <thead>
-                        <tr>
-                            <th>ID Pesanan</th>
-                            <th>Status</th>
-                            <th>Berat (kg)</th>
-                            <th>Total Harga</th>
-                            <th>Tanggal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse($orders as $order)
-                            <tr>
-                                <td>{{ $order->transaction_id }}</td>
-                                <td>{{ ucfirst($order->status) }}</td>
-                                <td>{{ $order->weight }}</td>
-                                <td>Rp {{ number_format($order->price, 0, ',', '.') }}</td>
-                                <td>{{ $order->created_at->format('d M Y') }}</td>
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="5">Tidak ada riwayat pesanan.</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-       
+       <!-- Order History Table -->
+<div class="card user-dashboard">
+    <div class="card-body">
+        <h4 class="card-title user-dashboard">Riwayat Pesanan</h4>
+        <table class="table user-dashboard">
+            <thead>
+                <tr>
+                    <th>ID Pesanan</th>
+                    <th>Status</th>
+                    <th>Berat (kg)</th>
+                    <th>Total Harga</th>
+                    <th>Tanggal</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse($orders as $order)
+                    <tr>
+                        <td>{{ $order->transaction_id }}</td>
+                        <td>{{ ucfirst($order->status) }}</td>
+                        <td>{{ $order->weight }}</td>
+                        <td>Rp {{ number_format($order->price, 0, ',', '.') }}</td>
+                        <td>{{ $order->created_at->format('d M Y') }}</td>
+                        <td>
+                            <a href="{{ route('user.invoice.show', $order->transaction_id) }}" class="btn btn-primary btn-sm-invoice">Lihat Invoice</a>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="6" class="text-center">Tidak ada riwayat pesanan.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
+</div>
 
     <!-- Include Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

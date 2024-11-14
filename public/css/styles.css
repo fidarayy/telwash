@@ -538,6 +538,7 @@ input[type="password"] {
 .custom-button.btn-secondary {
     background-color: #6c757d;
     color: white;
+    
 }
 
 .custom-button.btn-secondary:hover {
@@ -702,14 +703,19 @@ h4.user-dashboard-title {
     .list-group-item.user-dashboard {
         flex-direction: column;
         align-items: flex-start;
+        
     }
+}
+
+.btn-sm-invoice{
+    font-family: 'Poppins', sans-serif; /* Pastikan font sudah terhubung */
+    font-weight: 700;
+    
 }
 /*USER DASHBOARD END*/
 
 /*USER CREATE ORDER START*/
 /* General styles for the User Create Order page */
-
-
 /* Main Body */
 .user-create-order-body {
     display: flex;
@@ -840,3 +846,130 @@ h4.user-dashboard-title {
     background-color: #0056b3;
     cursor: pointer;
 }
+/*USER CREATE ORDER END*/
+
+/*USER PAYEMENT USER START*/
+/* USER PAYMENT PAGE */
+.user-payment-body {
+    background-color: #f8f9fa;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-payment-card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+}
+/*USER PAYEMENT USER END*/
+
+/*USER INVOICE USER START*/
+/* INVOICE USER PAGE START */
+
+/* General Styling */
+.invoice-user-body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F4E8D4; /* Soft grey background */
+    color: #333; /* Dark text */
+    margin: 0;
+    padding: 0;
+}
+
+.invoice-user-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+/* Header Styling */
+.invoice-user-header {
+    background-color: #C8B891;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 4px solid black;
+    
+}
+
+/* Body Styling */
+.invoice-user-body-content {
+    padding: 30px;
+}
+
+.invoice-user-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px dashed #ddd;
+    padding-bottom: 10px;
+}
+
+.invoice-user-info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.invoice-user-info-row strong {
+    color: #007bff; /* Highlight for labels */
+}
+
+/* Footer Styling */
+.invoice-user-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: #f9f9f9;
+    border-top: 2px solid #eee;
+}
+
+.invoice-user-footer .btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.invoice-user-footer .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+    margin-right: 10px;
+}
+
+.invoice-user-footer .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.invoice-user-footer .btn-primary {
+    background-color: #6C5A3B;
+    border: none;
+    color: white;
+}
+
+.invoice-user-footer .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Print Styling */
+@media print {
+    body {
+        background: white;
+    }
+    .btn {
+        display: none; /* Hide buttons during printing */
+    }
+}
+/* INVOICE USER PAGE END */

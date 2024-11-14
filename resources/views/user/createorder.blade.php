@@ -98,11 +98,12 @@
     <div class="input-group">
         <span class="input-group-text"><i class="ph-folder"></i></span>
         <select name="service_type" id="service_type" class="form-select user-create-order-select" required>
-            <option value="">Pilih Jenis Layanan</option>
-            <option value="cuci_saja">Cuci Saja</option>
-            <option value="cuci_setrika">Cuci dan Setrika</option>
-            <option value="express">Express (1 Hari)</option>
-        </select>
+    <option value="">Pilih Jenis Layanan</option>
+    <option value="cuci_saja">Cuci Saja</option>
+    <option value="cuci_setrika">Cuci dan Setrika</option>
+    <option value="express">Express (1 Hari)</option>
+</select>
+
     </div>
 </div>
 
