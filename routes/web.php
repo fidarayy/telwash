@@ -12,7 +12,8 @@ use App\Http\Controllers\UserDashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth.login');  // Mengarahkan ke halaman login
+    return view('admin.master_data.transaction.index');  // Mengarahkan ke halaman login
+    // return view('auth.login');  // Mengarahkan ke halaman login
 });
 
 Route::middleware(['auth'])->group(function () {
