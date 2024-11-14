@@ -7,8 +7,8 @@ use App\Http\Controllers\TransactionController;  // Pastikan Anda menggunakan Tr
 use App\Http\Controllers\PickupController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\BalanceController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserDashboardController;
-use App\Models\Transaction;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,6 +16,22 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+
+    // Admin Route
+    Route::prefix("admin")->name('admin.')->group(function () {
+
+        // Master data route
+        Route::prefix('master_data')->name('master_data.')->group(function () {
+
+            // Transaction Route
+            Route::controller(TransactionController::class)->prefix('/transaction')->name('transaction.')->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/show', 'show')->name('show');
+                Route::get('/{id}/edit', 'detail')->name('detail');
+            });
+        });
+    });
+
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -24,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/transactions/create', function () {
         return view('new-transaction'); // Mengarahkan ke 'resources/views/new-transaction.blade.php'
     })->name('transactions.create');
-    
+
     Route::get('/transactions/history', [TransactionController::class, 'history'])->name('transactions.history');
 
     // Customers
@@ -49,22 +65,19 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
     });
-   Route::get('/user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
-
-   Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
-Route::get('/orders/history', [OrderController::class, 'history'])->name('orders.history');
-Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-
-Route::get('/balance/topup', [BalanceController::class, 'topup'])->name('balance.topup');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::middleware(['auth'])->group(function () {
     Route::get('/user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
-});
 
+    Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::get('/orders/history', [OrderController::class, 'history'])->name('orders.history');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
+    // Route::get('/balance/topup', [BalanceController::class, 'topup'])->name('balance.topup');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
+    });
 });
 
 
 require __DIR__ . '/auth.php';
-
