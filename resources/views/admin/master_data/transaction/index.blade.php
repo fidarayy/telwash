@@ -14,62 +14,58 @@
     @endif
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         /* Custom styling */
-
         body {
             font-family: "Poppins", sans-serif;
             font-weight: 400;
             font-style: normal;
         }
-
         .header {
             background-color: #C8B891;
             padding: 10px 20px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            /* Shadow for header */
         }
-
         .logout-btn {
             background-color: black;
             color: white;
             border-radius: 20px;
             transition: background-color 0.3s ease;
-            /* Smooth transition */
         }
-
         .logout-btn:hover {
             background-color: rgb(54, 54, 54);
-            /* Faded black on hover */
             color: white;
         }
-
         .edit-btn {
             background-color: #B5A27F;
             border-radius: 50%;
             padding: 5px 10px;
             color: white;
             transition: background-color 0.3s ease;
-            /* Smooth transition */
         }
-
         .edit-btn:hover {
             background-color: #9b8e73;
-            /* Slightly darker on hover */
             color: rgb(230, 230, 230);
         }
-
         .main-title {
             text-align: center;
             margin-top: 20px;
             margin-bottom: 20px;
+        }
+        .dataTables_filter, .dataTables_length {
+            display: none; /* Hide default search and length elements */
+        }
+        .table-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .custom-length {
+            margin-left: auto;
         }
 
         .table-striped {
@@ -80,8 +76,7 @@
             border-right-width: 5px !important;
         }
 
-        .page-link.active,
-        .active>.page-link {
+        .page-link.active, .active > .page-link {
             z-index: 3;
             color: white;
             background-color: #B5A27F;
@@ -89,7 +84,6 @@
         }
     </style>
 </head>
-
 <body style="background: #F4E8D4;">
 
     <!-- Header -->
@@ -103,6 +97,44 @@
     <!-- Main Content -->
     <main class="container-fluid mt-4 main-content">
         <h1 class="main-title fs-1 fw-bold">History Transaksi</h1>
+
+        <!-- Custom Controls for DataTable -->
+        <div class="d-flex justify-content-between mb-3">
+            <!-- Left Controls: Search, Payment, Status -->
+            <div class="d-flex align-items-center gap-2">
+                <button class="btn edit-btn"><i class="ti ti-arrow-left"></i></button>
+
+                <!-- Search Box -->
+                <input type="text" id="customSearchBox" class="form-control form-control-sm" placeholder="Search...">
+
+                <!-- Filter Payment Dropdown -->
+                <select id="paymentFilter" class="form-select form-select-sm">
+                    <option value="">Payment</option>
+                    <option value="Lunas">Lunas</option>
+                    <option value="Belum">Belum</option>
+                    <option value="DP">DP</option>
+                </select>
+
+                <!-- Filter Status Dropdown -->
+                <select id="statusFilter" class="form-select form-select-sm">
+                    <option value="">Status</option>
+                    <option value="Selesai">Selesai</option>
+                    <option value="Proses">Proses</option>
+                </select>
+            </div>
+
+            <!-- Show Entries Dropdown (DataTable default length dropdown) -->
+            <div class="custom-length d-flex align-items-center">
+                <label class="me-2 mb-0">Show</label>
+                <select id="customEntries" aria-controls="dataTable" class="form-select form-select-sm me-2">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+                <span>entries</span>
+            </div>
+        </div>
 
         <!-- Data Table -->
         <div class="data-table-container">
@@ -120,7 +152,10 @@
                         <th>Payment</th>
                         <th style="width: 10px !important;">Edit</th>
                     </tr>
-                </thead>                
+                </thead>
+                <tbody>
+                    <!-- Data will be populated via AJAX -->
+                </tbody>
             </table>
         </div>
     </main>
@@ -134,67 +169,61 @@
     <!-- DataTables Initialization -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            $('#dataTable').DataTable({
+            // Initialize DataTable with server-side processing
+            var table = $('#dataTable').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '{{ route('admin.master_data.transaction.show') }}', 
+                    url: '{{ route('admin.master_data.transaction.show') }}',
+                    type: 'GET'
                 },
-                columns: [{
-                        data: 'status',
-                        name: 'status',
-                        title: 'Status'
-                    },
-                    {
-                        data: 'nama_pelanggan',
-                        name: 'nama_pelanggan',
-                        title: 'Nama Pelanggan'
-                    },
-                    {
-                        data: 'no_telepon',
-                        name: 'no_telepon',
-                        title: 'No Telepon'
-                    },
-                    {
-                        data: 'weight',
-                        name: 'weight',
-                        title: 'Berat (Kg)'
-                    },
-                    {
-                        data: 'price',
-                        name: 'price',
-                        title: 'Harga'
-                    },
-                    {
-                        data: 'estimated_finish_at',
-                        name: 'estimated_finish_at',
-                        title: 'Waktu Selesai'
-                    },
-                    {
-                        data: 'received_at',
-                        name: 'received_at',
-                        title: 'Diterima'
-                    },
-                    {
-                        data: 'service_type',
-                        name: 'service_type',
-                        title: 'Jenis Layanan'
-                    },
-                    {
-                        data: 'payment_status',
-                        name: 'payment_status',
-                        title: 'Payment'
-                    },
+                columns: [
+                    { data: 'status', name: 'status', title: 'Status' },
+                    { data: 'nama_pelanggan', name: 'nama_pelanggan', title: 'Nama Pelanggan' },
+                    { data: 'no_telepon', name: 'no_telepon', title: 'No Telepon' },
+                    { data: 'weight', name: 'weight', title: 'Berat (Kg)' },
+                    { data: 'price', name: 'price', title: 'Harga' },
+                    { data: 'estimated_finish_at', name: 'estimated_finish_at', title: 'Waktu Selesai' },
+                    { data: 'received_at', name: 'received_at', title: 'Diterima' },
+                    { data: 'service_type', name: 'service_type', title: 'Jenis Layanan' },
+                    { data: 'payment_status', name: 'payment_status', title: 'Payment' },
                     {
                         data: 'edit',
                         name: 'edit',
                         orderable: false,
-                        searchable: false,                       
-                    },
-                ],               
+                        searchable: false,
+                        render: function(data, type, row) {
+                            return `<button class="btn edit-btn"><i class="ti ti-ballpen"></i></button>`;
+                        }
+                    }
+                ],
+                paging: true,
+                searching: true,
+                ordering: true
+            });
+
+            // Custom Search Box
+            $('#customSearchBox').on('keyup', function() {
+                table.search(this.value).draw();
+            });
+
+            // Filter by Payment
+            $('#paymentFilter').on('change', function() {
+                var selectedPayment = $(this).val();
+                table.column(8).search(selectedPayment).draw();
+            });
+
+            // Filter by Status
+            $('#statusFilter').on('change', function() {
+                var selectedStatus = $(this).val();
+                table.column(0).search(selectedStatus).draw();
+            });
+
+            // Custom Show Entries
+            $('#customEntries').on('change', function() {
+                table.page.len(this.value).draw();
             });
         });
     </script>
 </body>
-
 </html>
