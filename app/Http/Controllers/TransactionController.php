@@ -39,8 +39,8 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::select(
             'transactions.*',
-            'customers.name as nama_pelanggan',       // Assuming 'name' is the column for customer name
-            'customers.phone_number as no_telepon'     // Assuming 'phone_number' is the column for customer phone
+            'customers.name as nama_pelanggan',       
+            'customers.phone_number as no_telepon'    
         )
             ->join('customers', 'transactions.customer_id', '=', 'customers.customer_id')
             ->join('users', 'transactions.user_id', '=', 'users.user_id')
