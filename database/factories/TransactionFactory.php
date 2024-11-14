@@ -35,7 +35,7 @@ class TransactionFactory extends Factory
             'finished_at' => null,
             'status' => $this->faker->randomElement(['Diterima', 'Diproses', 'Selesai', 'Diambil']), // Status
             'unit_type' => $this->faker->randomElement(['satuan', 'kilogram']),
-            'payment_method' => $this->faker->randomElement(['cash', 'qris', 'e_wallet']),
+            'payment_method' => $this->faker->randomElement(['Cash', 'Qris', 'E_wallet']),
         ];
     }
 }

@@ -82,6 +82,10 @@
             background-color: #B5A27F;
             border-color: #B5A27F;
         }
+
+        .pagination {
+            --bs-pagination-color: black !important;
+        }
     </style>
 </head>
 <body style="background: #F4E8D4;">
@@ -102,7 +106,11 @@
         <div class="d-flex justify-content-between mb-3">
             <!-- Left Controls: Search, Payment, Status -->
             <div class="d-flex align-items-center gap-2">
-                <button class="btn edit-btn"><i class="ti ti-arrow-left"></i></button>
+                {{-- <button class="btn edit-btn"><i class="ti ti-arrow-left"></i></button> --}}
+                <!-- Button Trigger for Modal -->
+                <button class="btn edit-btn" data-bs-toggle="modal" data-bs-target="#editModal">
+                    <i class="ti ti-arrow-left"></i>
+                </button>
 
                 <!-- Search Box -->
                 <input type="text" id="customSearchBox" class="form-control form-control-sm" placeholder="Search...">
@@ -111,15 +119,17 @@
                 <select id="paymentFilter" class="form-select form-select-sm">
                     <option value="">Payment</option>
                     <option value="Lunas">Lunas</option>
-                    <option value="Belum">Belum</option>
+                    <option value="Belum Dibayar">Belum</option>
                     <option value="DP">DP</option>
                 </select>
 
                 <!-- Filter Status Dropdown -->
                 <select id="statusFilter" class="form-select form-select-sm">
                     <option value="">Status</option>
+                    <option value="Diterima">Diterima</option>
+                    <option value="Diproses">Diproses</option>
                     <option value="Selesai">Selesai</option>
-                    <option value="Proses">Proses</option>
+                    <option value="Diambil">Diambil</option>
                 </select>
             </div>
 
@@ -158,6 +168,7 @@
                 </tbody>
             </table>
         </div>
+        @include('admin/master_data/transaction/modal')
     </main>
 
     <!-- jQuery, Bootstrap, DataTables, and Icons JS -->
