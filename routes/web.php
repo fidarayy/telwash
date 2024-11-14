@@ -16,23 +16,23 @@ Route::get('/', function () {
     // return view('auth.login');  // Mengarahkan ke halaman login
 });
 
-Route::middleware(['auth'])->group(function () {
+ // Admin Route
+ Route::prefix("admin")->name('admin.')->group(function () {
 
-    // Admin Route
-    Route::prefix("admin")->name('admin.')->group(function () {
+    // Master data route
+    Route::prefix('master_data')->name('master_data.')->group(function () {
 
-        // Master data route
-        Route::prefix('master_data')->name('master_data.')->group(function () {
-
-            // Transaction Route
-            Route::controller(TransactionController::class)->prefix('/transaction')->name('transaction.')->group(function () {
-                Route::get('/', 'index')->name('index');
-                Route::get('/show', 'show')->name('show');
-                Route::get('/{id}/edit', 'detail')->name('detail');
-            });
+        // Transaction Route
+        Route::controller(TransactionController::class)->prefix('/transaction')->name('transaction.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/show', 'show')->name('show');
+            Route::get('/{id}/edit', 'detail')->name('detail');
         });
     });
+});
 
+
+Route::middleware(['auth'])->group(function () {   
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 

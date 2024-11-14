@@ -17,7 +17,9 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 
     <style>
         /* Custom styling */
@@ -27,37 +29,49 @@
             font-weight: 400;
             font-style: normal;
         }
+
         .header {
             background-color: #C8B891;
             padding: 10px 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for header */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            /* Shadow for header */
         }
+
         .logout-btn {
             background-color: black;
             color: white;
             border-radius: 20px;
-            transition: background-color 0.3s ease; /* Smooth transition */
+            transition: background-color 0.3s ease;
+            /* Smooth transition */
         }
+
         .logout-btn:hover {
-            background-color: rgb(54, 54, 54); /* Faded black on hover */
+            background-color: rgb(54, 54, 54);
+            /* Faded black on hover */
             color: white;
         }
+
         .edit-btn {
             background-color: #B5A27F;
             border-radius: 50%;
             padding: 5px 10px;
             color: white;
-            transition: background-color 0.3s ease; /* Smooth transition */
+            transition: background-color 0.3s ease;
+            /* Smooth transition */
         }
+
         .edit-btn:hover {
-            background-color: #9b8e73; /* Slightly darker on hover */
+            background-color: #9b8e73;
+            /* Slightly darker on hover */
             color: rgb(230, 230, 230);
         }
+
         .main-title {
             text-align: center;
             margin-top: 20px;
             margin-bottom: 20px;
         }
+
         .table-striped {
             border-radius: 20px;
             border: 5px #7a746a solid;
@@ -65,7 +79,9 @@
             overflow: hidden;
             border-right-width: 5px !important;
         }
-        .page-link.active, .active > .page-link {
+
+        .page-link.active,
+        .active>.page-link {
             z-index: 3;
             color: white;
             background-color: #B5A27F;
@@ -73,6 +89,7 @@
         }
     </style>
 </head>
+
 <body style="background: #F4E8D4;">
 
     <!-- Header -->
@@ -103,35 +120,7 @@
                         <th>Payment</th>
                         <th style="width: 10px !important;">Edit</th>
                     </tr>
-                </thead>
-                <tbody>
-                    <!-- Data Dummy -->
-                    <tr>
-                        <td>Selesai</td>
-                        <td>John Doe</td>
-                        <td>08123456789</td>
-                        <td>5</td>
-                        <td>Rp 100,000</td>
-                        <td>12-11-2024 14:00</td>
-                        <td>10-11-2024</td>
-                        <td>Reguler</td>
-                        <td>Lunas</td>
-                        <td><button class="btn edit-btn"><i class="ti ti-ballpen"></i></button></td>
-                    </tr>
-                    <tr>
-                        <td>Proses</td>
-                        <td>Jane Doe</td>
-                        <td>08123456780</td>
-                        <td>3</td>
-                        <td>Rp 60,000</td>
-                        <td>12-11-2024 18:00</td>
-                        <td>10-11-2024</td>
-                        <td>Express</td>
-                        <td>Belum</td>
-                        <td><button class="btn edit-btn"><i class="ti ti-ballpen"></i></button></td>
-                    </tr>
-                    <!-- Tambahkan data dummy lain sesuai kebutuhan -->
-                </tbody>
+                </thead>                
             </table>
         </div>
     </main>
@@ -146,11 +135,66 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             $('#dataTable').DataTable({
-                paging: true,       // Enable pagination
-                searching: true,    // Enable search feature
-                ordering: true      // Enable sorting on each column
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route('admin.master_data.transaction.show') }}', 
+                },
+                columns: [{
+                        data: 'status',
+                        name: 'status',
+                        title: 'Status'
+                    },
+                    {
+                        data: 'nama_pelanggan',
+                        name: 'nama_pelanggan',
+                        title: 'Nama Pelanggan'
+                    },
+                    {
+                        data: 'no_telepon',
+                        name: 'no_telepon',
+                        title: 'No Telepon'
+                    },
+                    {
+                        data: 'weight',
+                        name: 'weight',
+                        title: 'Berat (Kg)'
+                    },
+                    {
+                        data: 'price',
+                        name: 'price',
+                        title: 'Harga'
+                    },
+                    {
+                        data: 'estimated_finish_at',
+                        name: 'estimated_finish_at',
+                        title: 'Waktu Selesai'
+                    },
+                    {
+                        data: 'received_at',
+                        name: 'received_at',
+                        title: 'Diterima'
+                    },
+                    {
+                        data: 'service_type',
+                        name: 'service_type',
+                        title: 'Jenis Layanan'
+                    },
+                    {
+                        data: 'payment_status',
+                        name: 'payment_status',
+                        title: 'Payment'
+                    },
+                    {
+                        data: 'edit',
+                        name: 'edit',
+                        orderable: false,
+                        searchable: false,                       
+                    },
+                ],               
             });
         });
     </script>
 </body>
+
 </html>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class TransactionController extends Controller
 {
@@ -33,9 +35,23 @@ class TransactionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $transactions = Transaction::select(
+            'transactions.*',
+            'customers.name as nama_pelanggan',       // Assuming 'name' is the column for customer name
+            'customers.phone_number as no_telepon'     // Assuming 'phone_number' is the column for customer phone
+        )
+            ->join('customers', 'transactions.customer_id', '=', 'customers.customer_id')
+            ->join('users', 'transactions.user_id', '=', 'users.user_id')
+            ->get();
+
+        return DataTables::of($transactions)
+            ->addColumn('edit', function ($row) {
+                return '<a href="/transactions/edit/' . $row->transaction_id . '" class="btn btn-sm btn-primary">Edit</a>';
+            })
+            ->rawColumns(['edit'])
+            ->make(true);
     }
 
     /**
