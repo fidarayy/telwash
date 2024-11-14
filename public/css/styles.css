@@ -659,6 +659,32 @@ h4.user-dashboard-title {
     font-family: 'Poppins', sans-serif; /* Pastikan font sudah terhubung */
     font-weight: 700;
 }
+/* Styling for "Isi Saldo" Button */
+.btn-primary2 {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary2:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+.btn-primary2:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 .btn-primary.user-dashboard:hover {
     background-color: #000000;
@@ -850,24 +876,111 @@ h4.user-dashboard-title {
 
 /*USER PAYEMENT USER START*/
 /* USER PAYMENT PAGE */
-.user-payment-body {
-    background-color: #f8f9fa;
-    height: 100vh;
+/* General Page Styles */
+body.payment-page {
+    background: linear-gradient(135deg, #F4E8D4, #D9BBA9);
+    font-family: 'Poppins', sans-serif;
+    color: #333;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
 }
 
-.user-payment-card {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+.payment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     padding: 20px;
 }
+
+/* Card Styles */
+.payment-card {
+    background: #ffffff;
+    color: #333;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Header Styles */
+.payment-header {
+    background: linear-gradient(135deg, #F4E8D4, #D9BBA9);
+    color: #333;
+    padding: 20px 15px;
+}
+
+.payment-header h2 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.payment-header p {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Body Styles */
+.payment-body {
+    padding: 20px 15px;
+    text-align: left;
+}
+
+.payment-field {
+    margin-bottom: 20px;
+}
+
+.payment-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+}
+
+.payment-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.payment-select:focus {
+    border-color: #D9BBA9;
+    box-shadow: 0 0 5px rgba(217, 187, 169, 0.3);
+}
+
+/* Button Styles */
+.payment-button {
+    background: linear-gradient(135deg, #F4E8D4, #D9BBA9);
+    color: #333;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.payment-button:hover {
+    background: linear-gradient(135deg, #D9BBA9, #F4E8D4);
+    color: #fff;
+}
+
 /*USER PAYEMENT USER END*/
 
-/*USER INVOICE USER START*/
-/* INVOICE USER PAGE START */
 
+/* INVOICE USER PAGE START */
 /* General Styling */
 .invoice-user-body {
     font-family: 'Roboto', sans-serif;
@@ -973,3 +1086,148 @@ h4.user-dashboard-title {
     }
 }
 /* INVOICE USER PAGE END */
+
+/* TOPUP USER PAGE START */
+/* Top-Up Page Styling */
+/* General Page Styles */
+body.topup-page {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.topup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Card Styles */
+.topup-card {
+    background: #ffffff;
+    color: #333;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Header Styles */
+.topup-header {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    padding: 20px 15px;
+}
+
+.topup-header h2 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.topup-header p {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Body Styles */
+.topup-body {
+    padding: 20px 15px;
+}
+
+.topup-field {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.topup-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+}
+
+.topup-input,
+.topup-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.topup-input:focus,
+.topup-select:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 5px rgba(106, 17, 203, 0.3);
+}
+
+/* Button Styles */
+.topup-button {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.topup-button:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+}
+
+/* Alert Styles */
+.topup-alert-success {
+    background: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Back Button as Rounded Button */
+.topup-back-button {
+    background-color: #fff;
+    color: #6a11cb;
+    border: 1px solid #6a11cb;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.topup-back-button i {
+    font-size: 1.2rem;
+}
+
+.topup-back-button:hover {
+    background-color: #6a11cb;
+    color: #fff;
+    border-color: #6a11cb;
+    box-shadow: 0 4px 8px rgba(106, 17, 203, 0.2);
+}
+
+/* TOPUP USER PAGE END */

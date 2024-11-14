@@ -67,11 +67,19 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user/orders/store', [TransactionController::class, 'store'])->name('user.orders.store');
     Route::get('/user/payment/{transaction}', [PaymentController::class, 'show'])->name('user.payment');
     Route::get('/user/payment/{transaction}', [PaymentController::class, 'show'])->name('user.payment');
-Route::post('/user/payment/{transaction}', [PaymentController::class, 'process'])->name('user.payment.process');
-Route::post('/pickup/{transaction}/accept', [TransactionController::class, 'acceptOrder'])->name('pickup.accept');
-Route::get('/invoice/{id}', [TransactionController::class, 'showInvoice'])->name('user.invoice.show');
+    Route::post('/user/payment/{transaction}', [PaymentController::class, 'process'])->name('user.payment.process');
+    Route::post('/pickup/{transaction}/accept', [TransactionController::class, 'acceptOrder'])->name('pickup.accept');
+    Route::get('/invoice/{id}', [TransactionController::class, 'showInvoice'])->name('user.invoice.show');
 
+    Route::middleware(['auth'])->group(function () {
+        // Menampilkan form top-up
+        Route::get('/balance/topup', [BalanceController::class, 'index'])->name('balance.topup');
 
+        Route::get('/user/topup', [BalanceController::class, 'index'])->name('user.balance.index');
+        // Proses top-up
+        Route::post('/user/topup', [BalanceController::class, 'store'])->name('user.balance.store');
+    });
+    
     
 });
 

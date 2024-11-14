@@ -63,7 +63,8 @@
                 <h3><i class="ph ph-wallet"></i> Saldo</h3>
                 <p>Rp {{ number_format($balance, 0, ',', '.') }}</p>
             </div>
-            <a href="{{ route('balance.topup') }}" class="btn btn-secondary user-dashboard">Isi Saldo</a>
+            <a href="{{ route('user.balance.index') }}" class="btn btn-primary2">Isi Saldo</a>
+
         </div>
     </div>
 </div>
