@@ -70,7 +70,7 @@
 
  <!-- Quick Actions -->
  <div class="mt-4">
-            <a href="{{ route('orders.create') }}" class="btn btn-primary user-dashboard">Pesan Baru</a>
+            <a href="{{ route('user.orders.create') }}" class="btn btn-primary user-dashboard">Pesan Baru</a>
             
         </div>
         <!-- Order History Table -->

@@ -704,3 +704,139 @@ h4.user-dashboard-title {
         align-items: flex-start;
     }
 }
+/*USER DASHBOARD END*/
+
+/*USER CREATE ORDER START*/
+/* General styles for the User Create Order page */
+
+
+/* Main Body */
+.user-create-order-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Memastikan tinggi halaman penuh */
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Pastikan font sudah terhubung */
+    font-weight: 700;
+    color: #333;
+    position: relative;
+    z-index: 2; /* Tetapkan z-index lebih tinggi untuk form */
+}
+
+/* Overlay background */
+.user-create-order-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Hitam transparan */
+    z-index: 1; /* Pastikan berada di atas hero, tetapi di bawah form */
+}
+
+/* Hero Section */
+.user-create-order-hero {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    z-index: 0; /* Tetap di bawah overlay */
+}
+
+/* Form positioning */
+.user-create-order-form-container {
+    position: relative;
+    z-index: 2; /* Pastikan form berada di atas overlay */
+    margin-top: 20px;
+}
+
+/* Card styling */
+.user-create-order-card {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    width: 450px;
+    padding: 20px;
+    background: #fff;
+    z-index: 3;
+    border-radius: 33px;
+    position: relative;
+}
+
+.input-group-text {
+    background-color: #f8f9fa; /* Warna latar belakang ikon */
+    border: 1px solid #ddd;    /* Warna border */
+    border-right: none;        /* Hilangkan border kanan */
+    border-radius: 8px 0 0 8px; /* Rounded di kiri */
+    color: #555;               /* Warna ikon */
+}
+
+.input-group .form-control {
+    border-left: none;         /* Hilangkan border kiri input */
+    border-radius: 0 8px 8px 0; /* Rounded di kanan */
+}
+
+.input-group .form-select {
+    border-left: none;         /* Hilangkan border kiri select */
+    border-radius: 0 8px 8px 0; /* Rounded di kanan */
+}
+
+
+/* Back button */
+.user-create-order-back {
+    color: #000000;
+    font-weight: bold;
+}
+
+.user-create-order-back:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Title */
+.user-create-order-title {
+    font-size: 1.8rem; /* Ukuran teks lebih besar */
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #333;
+    text-align: center;
+}
+
+/* Form fields */
+.user-create-order-field {
+    margin-bottom: 20px;
+}
+
+.user-create-order-label {
+    font-size: 1rem;
+    color: #555;
+}
+
+.user-create-order-input, .user-create-order-select {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.user-create-order-input:focus, .user-create-order-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* Submit button */
+.user-create-order-submit {
+    background-color: #B5A27F;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.2rem; /* Ukuran tombol lebih besar */
+    font-weight: bold;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.user-create-order-submit:hover {
+    background-color: #0056b3;
+    cursor: pointer;
+}

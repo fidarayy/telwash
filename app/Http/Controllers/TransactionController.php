@@ -43,14 +43,39 @@ class TransactionController extends Controller
 
     // Method untuk membuat transaksi baru
     public function create()
-    {
-        return view('transactions.create');  // Pastikan file `transactions/create.blade.php` ada
-    }
+{
+    return view('user.createorder'); // Sesuaikan path untuk user
+}
 
-    // Method untuk menampilkan history transaksi
-    public function history()
+public function store(Request $request)
     {
-        // Logika untuk mendapatkan data history transaksi
-        return view('transactions.history');  // Pastikan file `transactions/history.blade.php` ada
+        // Validasi input
+        $request->validate([
+            'customer_name' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:15',
+            'address' => 'required|string|max:255',
+            'service_type' => 'required|in:cuci_saja,cuci_setrika,express',
+        ]);
+
+        // Cari atau buat pelanggan baru
+        $customer = Customer::firstOrCreate(
+            ['phone_number' => $request->phone_number],
+            ['name' => $request->customer_name]
+        );
+
+        // Buat transaksi baru
+        $transaction = Transaction::create([
+            'customer_id' => $customer->customer_id,
+            'user_id' => Auth::id(), // ID user yang login
+            'service_type' => $request->service_type,
+            'status' => 'diterima', // Status awal
+            'payment_status' => 'pending', // Belum dibayar
+            'received_at' => now(),
+        ]);
+
+        // Redirect ke halaman pembayaran
+        return redirect()->route('user.payment', ['transaction' => $transaction->transaction_id])
+            ->with('success', 'Pesanan berhasil dibuat, lanjutkan ke pembayaran.');
     }
 }
+
