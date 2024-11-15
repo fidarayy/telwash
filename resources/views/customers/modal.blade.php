@@ -5,7 +5,8 @@
             <!-- Modal Header -->
             <div class="d-flex align-items-center mb-2">
                 <button type="button" class="btn btn-close me-3" data-bs-dismiss="modal" aria-label="Close"></button>
-                <h1 class="modal-title fs-2 fw-bold text-center w-100" id="tambahPelangganModalLabel">Tambah Pelanggan</h1>
+                {{-- <h1 class="modal-title fs-2 fw-bold text-center w-100" id="tambahPelangganModalLabel">Tambah Pelanggan</h1> --}}
+                <h1 class="modal-title fs-2 fw-bold text-center w-100" id="tambahPelangganModalLabel">Edit Data</h1>
             </div>
 
             <!-- Modal Body -->
@@ -30,7 +31,7 @@
             <!-- Modal Footer -->
             <div class="modal-footer d-flex justify-content-center">
                 <button type="button" class="btn rounded-pill text-white w-100" style="background-color: #B5A27F;">
-                    Simpan
+                    Simpan/Edit
                 </button>
             </div>
         </div>

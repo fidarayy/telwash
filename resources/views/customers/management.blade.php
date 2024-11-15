@@ -141,6 +141,9 @@
 
             <!-- Custom Controls for DataTable -->
             <div class="table-controls">
+                <button class="btn edit-btn me-2" data-bs-toggle="modal" data-bs-target="#tambahPelangganModal">
+                    <i class="ti ti-arrow-left"></i>
+                </button>
                 <!-- Left Control: Search Box -->
                 <input type="text" id="customSearchBox" class="form-control form-control-sm w-25" placeholder="Search...">
 
@@ -263,6 +266,7 @@
                 </table>
             </div>
         </div>
+        @include('customers.modal')
     </main>
 
 
