@@ -7,13 +7,32 @@ use App\Http\Controllers\TransactionController;  // Pastikan Anda menggunakan Tr
 use App\Http\Controllers\PickupController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\BalanceController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserDashboardController;
-use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('auth.login');  // Mengarahkan ke halaman login
+    // return view('admin.master_data.transaction.index');  // Mengarahkan ke halaman login
+    // return view('customers.index');  // Mengarahkan ke halaman login
+    return view('customers.management');  // Mengarahkan ke halaman login
+    // return view('auth.login');  // Mengarahkan ke halaman login
 });
+
+ // Admin Route
+ Route::prefix("admin")->name('admin.')->group(function () {
+
+    // Master data route
+    Route::prefix('master_data')->name('master_data.')->group(function () {
+
+        // Transaction Route
+        Route::controller(TransactionController::class)->prefix('/transaction')->name('transaction.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/show', 'show')->name('show');
+            Route::get('/{id}/edit', 'detail')->name('detail');
+        });
+    });
+});
+
 
 Route::middleware(['auth'])->group(function () {
     // Dashboard
@@ -55,34 +74,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders/history', [OrderController::class, 'history'])->name('orders.history');
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
-    Route::get('/balance/topup', [BalanceController::class, 'topup'])->name('balance.topup');
+    // Route::get('/balance/topup', [BalanceController::class, 'topup'])->name('balance.topup');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     Route::middleware(['auth'])->group(function () {
         Route::get('/user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
     });
-
-    Route::get('/orders/create', [TransactionController::class, 'create'])->name('user.orders.create');
-    Route::post('/orders', [TransactionController::class, 'store'])->name('user.orders.store');
-    Route::post('/user/orders/store', [TransactionController::class, 'store'])->name('user.orders.store');
-    Route::get('/user/payment/{transaction}', [PaymentController::class, 'show'])->name('user.payment');
-    Route::get('/user/payment/{transaction}', [PaymentController::class, 'show'])->name('user.payment');
-    Route::post('/user/payment/{transaction}', [PaymentController::class, 'process'])->name('user.payment.process');
-    Route::post('/pickup/{transaction}/accept', [TransactionController::class, 'acceptOrder'])->name('pickup.accept');
-    Route::get('/invoice/{id}', [TransactionController::class, 'showInvoice'])->name('user.invoice.show');
-
-    Route::middleware(['auth'])->group(function () {
-        // Menampilkan form top-up
-        Route::get('/balance/topup', [BalanceController::class, 'index'])->name('balance.topup');
-
-        Route::get('/user/topup', [BalanceController::class, 'index'])->name('user.balance.index');
-        // Proses top-up
-        Route::post('/user/topup', [BalanceController::class, 'store'])->name('user.balance.store');
-    });
-    
-    
 });
 
 
 require __DIR__ . '/auth.php';
-
