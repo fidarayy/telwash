@@ -9,6 +9,6 @@ class CustomerController extends Controller
     public function index()
     {
         $customers = Customer::all(); // Mengambil semua data pelanggan
-        return view('customers.index', compact('customers')); // Menampilkan view dengan data pelanggan
+        return view('admin.master_data.customers.index', compact('customers')); // Menampilkan view dengan data pelanggan
     }
 }

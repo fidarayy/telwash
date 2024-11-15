@@ -30,6 +30,12 @@ Route::get('/', function () {
             Route::get('/show', 'show')->name('show');
             Route::get('/{id}/edit', 'detail')->name('detail');
         });
+
+        Route::controller(CustomerController::class)->prefix('/customer')->name('customer.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/show', 'show')->name('show');
+            Route::get('/{id}/edit', 'detail')->name('detail');
+        });
     });
 });
 

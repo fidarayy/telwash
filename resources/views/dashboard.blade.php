@@ -54,7 +54,7 @@
             <nav class="nav flex-column">
                 <a href="{{ route('transactions.create') }}" class="nav-link">Transaksi Baru</a>
                 <a class="nav-link" href="{{ route('customers.index') }}">Data Pelanggan</a>
-                <a class="nav-link" href="{{ route('transactions.history') }}">History Transaksi</a>
+                <a class="nav-link" href="{{ route('admin.master_data.transaction.index') }}">History Transaksi</a>
                 <a class="nav-link" href="{{ route('pickup.index') }}">Pesanan Pickup</a>
                 <a class="nav-link" href="{{ route('vouchers.index') }}">Kelola Voucher</a>
             </nav>
@@ -152,11 +152,11 @@
                         <i class="ph ph-plus-circle"></i> Transaksi Baru
                         <i class="ph ph-caret-right ms-auto"></i>
                     </a>
-                    <a class="nav-link" href="{{ route('customers.index') }}">
+                    <a class="nav-link" href="{{ route('admin.master_data.customer.index') }}">
                         <i class="ph ph-user-list"></i> Data Pelanggan
                         <i class="ph ph-caret-right ms-auto"></i>
                     </a>
-                    <a class="nav-link" href="{{ route('transactions.history') }}">
+                    <a class="nav-link" href="{{ route('admin.master_data.transaction.index') }}">
                         <i class="ph ph-clock"></i> History Transaksi
                         <i class="ph ph-caret-right ms-auto"></i>
                     </a>

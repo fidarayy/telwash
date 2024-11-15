@@ -129,7 +129,11 @@
         <div class="card text-center">
             <!-- Title and Back Button -->
             <div class="title-container">
-                <i class="ti ti-arrow-left fs-1"></i>
+                <a href="{{ route('dashboard') }}">
+                    <button class="btn btn-md">
+                        <i class="ti ti-arrow-left fs-1"></i>
+                    </button>
+                </a>
                 <h1 class="main-title">Data Pelanggan</h1>
                 <i class="ti ti-arrow-left fs-1 text-light"></i>
             </div>
@@ -149,7 +153,7 @@
                 </button>
             </div>
         </div>
-        @include('customers.modal')
+        @include('admin.master_data.customers.modal')
     </main>
 
     <!-- jQuery, Bootstrap JS -->

@@ -13,7 +13,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        return view("admin.master_data.transaction.index");
     }
 
     /**
@@ -39,8 +39,8 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::select(
             'transactions.*',
-            'customers.name as nama_pelanggan',       
-            'customers.phone_number as no_telepon'    
+            'customers.name as nama_pelanggan',
+            'customers.phone_number as no_telepon'
         )
             ->join('customers', 'transactions.customer_id', '=', 'customers.customer_id')
             ->join('users', 'transactions.user_id', '=', 'users.user_id')
@@ -116,7 +116,7 @@ class TransactionController extends Controller
 //     ));
 // }
 
-    
+
 
 //     // Method untuk membuat transaksi baru
 //     public function create()

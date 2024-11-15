@@ -108,9 +108,11 @@
             <div class="d-flex align-items-center gap-2">
                 {{-- <button class="btn edit-btn"><i class="ti ti-arrow-left"></i></button> --}}
                 <!-- Button Trigger for Modal -->
-                <button class="btn edit-btn" data-bs-toggle="modal" data-bs-target="#editModal">
-                    <i class="ti ti-arrow-left"></i>
-                </button>
+                <a href="{{ route("dashboard") }}">
+                    <button class="btn edit-btn">
+                        <i class="ti ti-arrow-left"></i>
+                    </button>
+                </a>
 
                 <!-- Search Box -->
                 <input type="text" id="customSearchBox" class="form-control form-control-sm" placeholder="Search...">
@@ -160,7 +162,7 @@
                         <th>Diterima</th>
                         <th>Jenis Layanan</th>
                         <th>Payment</th>
-                        <th style="width: 10px !important;">Edit</th>
+                        <th >Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -204,7 +206,7 @@
                         orderable: false,
                         searchable: false,
                         render: function(data, type, row) {
-                            return `<button class="btn edit-btn"><i class="ti ti-ballpen"></i></button>`;
+                            return `<button class="btn edit-btn" data-bs-toggle="modal" data-bs-target="#editModal"><i class="ti ti-ballpen"></i></button>`;
                         }
                     }
                 ],
