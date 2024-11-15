@@ -538,6 +538,7 @@ input[type="password"] {
 .custom-button.btn-secondary {
     background-color: #6c757d;
     color: white;
+    
 }
 
 .custom-button.btn-secondary:hover {
@@ -658,6 +659,32 @@ h4.user-dashboard-title {
     font-family: 'Poppins', sans-serif; /* Pastikan font sudah terhubung */
     font-weight: 700;
 }
+/* Styling for "Isi Saldo" Button */
+.btn-primary2 {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary2:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    color: #fff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+    cursor: pointer;
+}
+
+.btn-primary2:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
 .btn-primary.user-dashboard:hover {
     background-color: #000000;
@@ -702,5 +729,505 @@ h4.user-dashboard-title {
     .list-group-item.user-dashboard {
         flex-direction: column;
         align-items: flex-start;
+        
     }
 }
+
+.btn-sm-invoice{
+    font-family: 'Poppins', sans-serif; /* Pastikan font sudah terhubung */
+    font-weight: 700;
+    
+}
+/*USER DASHBOARD END*/
+
+/*USER CREATE ORDER START*/
+/* General styles for the User Create Order page */
+/* Main Body */
+.user-create-order-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Memastikan tinggi halaman penuh */
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* Pastikan font sudah terhubung */
+    font-weight: 700;
+    color: #333;
+    position: relative;
+    z-index: 2; /* Tetapkan z-index lebih tinggi untuk form */
+}
+
+/* Overlay background */
+.user-create-order-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Hitam transparan */
+    z-index: 1; /* Pastikan berada di atas hero, tetapi di bawah form */
+}
+
+/* Hero Section */
+.user-create-order-hero {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    z-index: 0; /* Tetap di bawah overlay */
+}
+
+/* Form positioning */
+.user-create-order-form-container {
+    position: relative;
+    z-index: 2; /* Pastikan form berada di atas overlay */
+    margin-top: 20px;
+}
+
+/* Card styling */
+.user-create-order-card {
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    width: 450px;
+    padding: 20px;
+    background: #fff;
+    z-index: 3;
+    border-radius: 33px;
+    position: relative;
+}
+
+.input-group-text {
+    background-color: #f8f9fa; /* Warna latar belakang ikon */
+    border: 1px solid #ddd;    /* Warna border */
+    border-right: none;        /* Hilangkan border kanan */
+    border-radius: 8px 0 0 8px; /* Rounded di kiri */
+    color: #555;               /* Warna ikon */
+}
+
+.input-group .form-control {
+    border-left: none;         /* Hilangkan border kiri input */
+    border-radius: 0 8px 8px 0; /* Rounded di kanan */
+}
+
+.input-group .form-select {
+    border-left: none;         /* Hilangkan border kiri select */
+    border-radius: 0 8px 8px 0; /* Rounded di kanan */
+}
+
+
+/* Back button */
+.user-create-order-back {
+    color: #000000;
+    font-weight: bold;
+}
+
+.user-create-order-back:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Title */
+.user-create-order-title {
+    font-size: 1.8rem; /* Ukuran teks lebih besar */
+    font-weight: bold;
+    margin-bottom: 25px;
+    color: #333;
+    text-align: center;
+}
+
+/* Form fields */
+.user-create-order-field {
+    margin-bottom: 20px;
+}
+
+.user-create-order-label {
+    font-size: 1rem;
+    color: #555;
+}
+
+.user-create-order-input, .user-create-order-select {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1rem;
+}
+
+.user-create-order-input:focus, .user-create-order-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* Submit button */
+.user-create-order-submit {
+    background-color: #B5A27F;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 1.2rem; /* Ukuran tombol lebih besar */
+    font-weight: bold;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.user-create-order-submit:hover {
+    background-color: #0056b3;
+    cursor: pointer;
+}
+/*USER CREATE ORDER END*/
+
+/*USER PAYEMENT USER START*/
+/* USER PAYMENT PAGE */
+/* General Page Styles */
+body.payment-page {
+    background: linear-gradient(135deg, #F4E8D4, #D9BBA9);
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.payment-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Card Styles */
+.payment-card {
+    background: #ffffff;
+    color: #333;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Header Styles */
+.payment-header {
+    background: linear-gradient(135deg, #F4E8D4, #D9BBA9);
+    color: #333;
+    padding: 20px 15px;
+}
+
+.payment-header h2 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.payment-header p {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Body Styles */
+.payment-body {
+    padding: 20px 15px;
+    text-align: left;
+}
+
+.payment-field {
+    margin-bottom: 20px;
+}
+
+.payment-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+}
+
+.payment-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.payment-select:focus {
+    border-color: #D9BBA9;
+    box-shadow: 0 0 5px rgba(217, 187, 169, 0.3);
+}
+
+/* Button Styles */
+.payment-button {
+    background: linear-gradient(135deg, #F4E8D4, #D9BBA9);
+    color: #333;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.payment-button:hover {
+    background: linear-gradient(135deg, #D9BBA9, #F4E8D4);
+    color: #fff;
+}
+
+/*USER PAYEMENT USER END*/
+
+
+/* INVOICE USER PAGE START */
+/* General Styling */
+.invoice-user-body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #F4E8D4; /* Soft grey background */
+    color: #333; /* Dark text */
+    margin: 0;
+    padding: 0;
+}
+
+.invoice-user-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+/* Header Styling */
+.invoice-user-header {
+    background-color: #C8B891;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-bottom: 4px solid black;
+    
+}
+
+/* Body Styling */
+.invoice-user-body-content {
+    padding: 30px;
+}
+
+.invoice-user-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px dashed #ddd;
+    padding-bottom: 10px;
+}
+
+.invoice-user-info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.invoice-user-info-row strong {
+    color: #007bff; /* Highlight for labels */
+}
+
+/* Footer Styling */
+.invoice-user-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: #f9f9f9;
+    border-top: 2px solid #eee;
+}
+
+.invoice-user-footer .btn {
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.invoice-user-footer .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+    color: white;
+    margin-right: 10px;
+}
+
+.invoice-user-footer .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.invoice-user-footer .btn-primary {
+    background-color: #6C5A3B;
+    border: none;
+    color: white;
+}
+
+.invoice-user-footer .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Print Styling */
+@media print {
+    body {
+        background: white;
+    }
+    .btn {
+        display: none; /* Hide buttons during printing */
+    }
+}
+/* INVOICE USER PAGE END */
+
+/* TOPUP USER PAGE START */
+/* Top-Up Page Styling */
+/* General Page Styles */
+body.topup-page {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.topup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Card Styles */
+.topup-card {
+    background: #ffffff;
+    color: #333;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* Header Styles */
+.topup-header {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    padding: 20px 15px;
+}
+
+.topup-header h2 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.topup-header p {
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Body Styles */
+.topup-body {
+    padding: 20px 15px;
+}
+
+.topup-field {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.topup-label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+}
+
+.topup-input,
+.topup-select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.topup-input:focus,
+.topup-select:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 5px rgba(106, 17, 203, 0.3);
+}
+
+/* Button Styles */
+.topup-button {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    padding: 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.topup-button:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+}
+
+/* Alert Styles */
+.topup-alert-success {
+    background: #d4edda;
+    color: #155724;
+    padding: 10px;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Back Button as Rounded Button */
+.topup-back-button {
+    background-color: #fff;
+    color: #6a11cb;
+    border: 1px solid #6a11cb;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.topup-back-button i {
+    font-size: 1.2rem;
+}
+
+.topup-back-button:hover {
+    background-color: #6a11cb;
+    color: #fff;
+    border-color: #6a11cb;
+    box-shadow: 0 4px 8px rgba(106, 17, 203, 0.2);
+}
+
+/* TOPUP USER PAGE END */

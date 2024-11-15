@@ -8,7 +8,7 @@ use App\Http\Controllers\PickupController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\BalanceController;
 use App\Http\Controllers\UserDashboardController;
-use App\Models\Transaction;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,7 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/transactions/create', function () {
         return view('new-transaction'); // Mengarahkan ke 'resources/views/new-transaction.blade.php'
     })->name('transactions.create');
-    
+
     Route::get('/transactions/history', [TransactionController::class, 'history'])->name('transactions.history');
 
     // Customers
@@ -49,20 +49,38 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('/user/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
     });
-   Route::get('/user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
-
-   Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
-Route::get('/orders/history', [OrderController::class, 'history'])->name('orders.history');
-Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-
-Route::get('/balance/topup', [BalanceController::class, 'topup'])->name('balance.topup');
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::middleware(['auth'])->group(function () {
     Route::get('/user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
-});
 
+    Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::get('/orders/history', [OrderController::class, 'history'])->name('orders.history');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
+    Route::get('/balance/topup', [BalanceController::class, 'topup'])->name('balance.topup');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/user/dashboard', [DashboardController::class, 'userDashboard'])->name('user.dashboard');
+    });
+
+    Route::get('/orders/create', [TransactionController::class, 'create'])->name('user.orders.create');
+    Route::post('/orders', [TransactionController::class, 'store'])->name('user.orders.store');
+    Route::post('/user/orders/store', [TransactionController::class, 'store'])->name('user.orders.store');
+    Route::get('/user/payment/{transaction}', [PaymentController::class, 'show'])->name('user.payment');
+    Route::get('/user/payment/{transaction}', [PaymentController::class, 'show'])->name('user.payment');
+    Route::post('/user/payment/{transaction}', [PaymentController::class, 'process'])->name('user.payment.process');
+    Route::post('/pickup/{transaction}/accept', [TransactionController::class, 'acceptOrder'])->name('pickup.accept');
+    Route::get('/invoice/{id}', [TransactionController::class, 'showInvoice'])->name('user.invoice.show');
+
+    Route::middleware(['auth'])->group(function () {
+        // Menampilkan form top-up
+        Route::get('/balance/topup', [BalanceController::class, 'index'])->name('balance.topup');
+
+        Route::get('/user/topup', [BalanceController::class, 'index'])->name('user.balance.index');
+        // Proses top-up
+        Route::post('/user/topup', [BalanceController::class, 'store'])->name('user.balance.store');
+    });
+    
+    
 });
 
 
