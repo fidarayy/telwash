@@ -12,19 +12,19 @@ return new class extends Migration
     public function up()
     {
         Schema::create('transactions', function (Blueprint $table) {
-            $table->id('transaction_id');  // Primary key dengan auto_increment
+            $table->id(column: 'transaction_id');  // Primary key dengan auto_increment
             $table->unsignedBigInteger('customer_id');  // Foreign key ke tabel Customers
-            $table->unsignedBigInteger('user_id');  // Foreign key ke tabel Users
+            $table->unsignedBigInteger(column: 'user_id');  // Foreign key ke tabel Users
             $table->enum('service_type', ['Cuci Saja', 'Cuci Dan Setrika', 'Express']);  // Jenis layanan
             $table->float('weight');  // Berat pakaian
             $table->decimal('price', 10, 2);  // Harga transaksi
             $table->enum('payment_status', ['Lunas', 'DP', 'Belum Dibayar']);  // Status pembayaran
-            $table->integer('service_duration');  // Lama pengerjaan (hari)
+            $table->integer('service_duration')->nullable();  // Lama pengerjaan (hari)
             $table->timestamp('received_at')->default(DB::raw('CURRENT_TIMESTAMP'));  // Waktu pesanan diterima
             $table->timestamp('estimated_finish_at')->nullable();  // Estimasi waktu selesai (nullable)
             $table->timestamp('finished_at')->nullable();  // Waktu selesai sesungguhnya (nullable)
             $table->enum('status', ['Diterima', 'Diproses', 'Selesai', 'Diambil']);  // Status proses laundry
-            $table->enum('unit_type', ['satuan', 'kilogram']);  // Jenis satuan atau kilogram
+            $table->enum('unit_type', ['Satuan', 'Kilogram']);  // Jenis satuan atau kilogram
             $table->enum('payment_method', ['Cash', 'Qris', 'E_wallet']);  // Metode pembayaran
             $table->timestamps();  // created_at dan updated_at otomatis
 
