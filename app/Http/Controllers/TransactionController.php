@@ -88,6 +88,9 @@ class TransactionController extends Controller
             ->addColumn('edit', function ($row) {
                 return '<button class="btn edit-btn" data-bs-toggle="modal" data-bs-target="#editModal" data-id="' . $row->transaction_id . '" onclick="edit(this)"><i class="ti ti-ballpen"></i></button>';
             })
+            ->editColumn('price', function($row) {
+                return "Rp. " . number_format($row->price, 0, '', '.');; 
+            })
             ->rawColumns(['edit'])
             ->make(true);
     }
@@ -104,11 +107,11 @@ class TransactionController extends Controller
         }
 
         return response()->json([
-            'id' => $transaction->transaction_id,
+            'transaction_id' => $transaction->transaction_id,
             'customer_id' => $transaction->customer_id,
             'phone_number' => $transaction->customer->phone_number,
             'weight' => $transaction->weight,
-            'price' => $transaction->price,
+            'price' => number_format($transaction->price, 0, '', '.'),
             'finished_at' => Carbon::parse($transaction->finished_at)->format('Y-m-d\TH:i'),
             'received_at' => Carbon::parse($transaction->received_at)->format('Y-m-d\TH:i'),
             'service_type' => $transaction->service_type,

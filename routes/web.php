@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\TransactionController;  // Pastikan Anda menggunakan TransactionController
+use App\Http\Controllers\TransactionController; 
 use App\Http\Controllers\PickupController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Controllers\OrderController;
@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $customers = Customer::all();
     return view('admin.master_data.transaction.index', compact('customers'));  // Mengarahkan ke halaman login
-    // return view('customers.index');  // Mengarahkan ke halaman login
+    // return view('admin.master_data.customers.index');  // Mengarahkan ke halaman login
     // return view('customers.management');  // Mengarahkan ke halaman login
     // return view('auth.login');  // Mengarahkan ke halaman login
 });
@@ -38,14 +38,8 @@ Route::get('/', function () {
         Route::controller(CustomerController::class)->prefix('/customer')->name('customer.')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/show', 'show')->name('show');
-            Route::get('/{id}/edit', 'detail')->name('detail');
-        });
-
-        Route::controller(CustomerController::class)->prefix('/customer')->name('customer.')->group(function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('/show', 'show')->name('show');
-            Route::get('/{id}/edit', 'detail')->name('detail');
-        });
+            Route::get('/{id}/edit', 'edit')->name('edit');
+        });       
     });
 });
 

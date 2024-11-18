@@ -13,6 +13,7 @@
 
             <!-- Modal Body -->
             <div class="modal-body">
+                <span class="ps-2 fs-6">Id Transaksi : <span id="transaction_id"></span></span>
                 <!-- Customer ID Field -->
                 <div class="mb-3 align-items-center">
                     <select name="customer_id" class="form-select rounded-pill select" id="customer_id">
@@ -47,16 +48,15 @@
                 </div>
 
                 <!-- Price Field -->
-                <div class="mb-3 form-group  align-items-center">
+                <div class="mb-3 form-group align-items-center">
                     <input type="text" name="price" class="form-control rounded-pill" id="price"
-                        placeholder="Harga" value="{{ old('price') }}">
+                           placeholder="Harga" value="{{ old('price') }}">
                     @error('price')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
-                </div>
-
+                </div>                
 
                 <!-- Finished At Field -->
                 <div class="mb-3 input-group flex-nowrap">

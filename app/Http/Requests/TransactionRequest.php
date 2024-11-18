@@ -78,12 +78,20 @@ class TransactionRequest extends FormRequest
         ];
     }
 
+    protected function prepareForValidation()
+    {        
+        $this->merge([
+            'price' => floatval(str_replace(['Rp. ', '.'], '', $this->price))
+        ]);
+    }
+    
+
     protected function failedValidation(Validator $validator)
     {
         // Flash a flag to reopen the modal
         session()->flash('showModal', true);
         session()->flash('previousId', $this->route('id')); // Assuming 'id' is in the route
-        session()->flash('error', 'Transaction updated failed');        
+        session()->flash('error', 'Transaction updated failed');
 
         throw new ValidationException($validator);
     }

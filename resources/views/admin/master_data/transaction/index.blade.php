@@ -16,6 +16,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Mask js -->
+    <script src="https://unpkg.com/imask"></script>
+
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -227,17 +230,40 @@
                 .then(data => {
                     // Looping data untuk mengisi input form berdasarkan id
                     const form = document.getElementById('updateForm');
-                    clearValidationErrors(form);                    
+                    clearValidationErrors(form);
                     form.action = `{{ route('admin.master_data.transaction.update', ['id' => 'id']) }}`.replace('id',
                         transactionId);
 
                     Object.entries(data).forEach(([key, value]) => {
                         const inputElement = $('#' + key); // Cari elemen berdasarkan id
                         if (inputElement) {
-                            // Jika elemen ditemukan, isi nilainya
-                            inputElement.val(value).change()
+
+                            if (inputElement.is('input') || inputElement.is('select')) {
+                                // Jika elemen adalah input, select, atau textarea
+                                inputElement.val(value).change();
+                            } else {
+                                // Jika elemen bukan input, isi menggunakan .html()
+                                inputElement.html(value);
+                            }
                         }
                     });
+
+                    const priceInput = document.getElementById('price');
+                    if (priceInput) {
+                        IMask(priceInput, {
+                            mask: 'Rp. num',
+                            blocks: {
+                                num: {
+                                    mask: Number,
+                                    thousandsSeparator: '.', // Separator ribuan
+                                    scale: 0, // Tidak ada desimal
+                                    signed: false, // Tidak ada tanda minus
+                                },
+                            },
+                            prefix: 'Rp. ', // Tambahkan prefix "Rp. "
+                            lazy: false, // Menampilkan prefix meskipun input kosong
+                        });
+                    }
 
                     // Buka modal
                     const editModal = new bootstrap.Modal(document.getElementById('editModal'));
@@ -258,9 +284,9 @@
                 const modal = new bootstrap.Modal(document.getElementById('editModal'));
                 modal.show();
 
-                const form = document.getElementById('updateForm');                
+                const form = document.getElementById('updateForm');
                 form.action =
-                `{{ route('admin.master_data.transaction.update', ['id' => session('previousId')]) }}`;
+                    `{{ route('admin.master_data.transaction.update', ['id' => session('previousId')]) }}`;
             @endif
 
             // Initialize DataTable with server-side processing
