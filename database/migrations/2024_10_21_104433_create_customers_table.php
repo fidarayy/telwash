@@ -12,7 +12,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->unsignedBigInteger('customer_id')->autoIncrement(); // Primary key
+            $table->unsignedBigInteger(column: 'customer_id')->autoIncrement(); // Primary key
             $table->string('name', 255);
             $table->string('phone_number', 15)->unique();
             $table->timestamps();

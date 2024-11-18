@@ -13,10 +13,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    $customers = Customer::all();
-    return view('admin.master_data.transaction.index', compact('customers'));  // Mengarahkan ke halaman login
-    // return view('admin.master_data.customers.index');  // Mengarahkan ke halaman login
-    // return view('customers.management');  // Mengarahkan ke halaman login
+    $edit = true;
+    // return view('admin.master_data.transaction.index', compact('customers'));  // Mengarahkan ke halaman login
+    return view('admin.master_data.customers.index');  // Mengarahkan ke halaman login
+    // return view('admin.master_data.customers.management', compact("edit"));  // Mengarahkan ke halaman login
+    // return view('dashboard');
     // return view('auth.login');  // Mengarahkan ke halaman login
 });
 
@@ -37,7 +38,10 @@ Route::get('/', function () {
 
         Route::controller(CustomerController::class)->prefix('/customer')->name('customer.')->group(function () {
             Route::get('/', 'index')->name('index');
+            Route::post('/store', 'store')->name('store');
             Route::get('/show', 'show')->name('show');
+            Route::post('/{id}/update', action: 'update')->name('update');
+            Route::get('/management', 'management')->name('management');
             Route::get('/{id}/edit', 'edit')->name('edit');
         });       
     });

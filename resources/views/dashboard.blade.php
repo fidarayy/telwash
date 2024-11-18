@@ -53,7 +53,7 @@
             <p>Perlu Dikirim Hari Ini: {{ $pesananPerluDikirim }}</p>
             <nav class="nav flex-column">
                 <a href="{{ route('transactions.create') }}" class="nav-link">Transaksi Baru</a>
-                <a class="nav-link" href="{{ route('customers.index') }}">Data Pelanggan</a>
+                <a class="nav-link" href="{{ route('admin.master_data.customer.index') }}">Data Pelanggan</a>
                 <a class="nav-link" href="{{ route('admin.master_data.transaction.index') }}">History Transaksi</a>
                 <a class="nav-link" href="{{ route('pickup.index') }}">Pesanan Pickup</a>
                 <a class="nav-link" href="{{ route('vouchers.index') }}">Kelola Voucher</a>

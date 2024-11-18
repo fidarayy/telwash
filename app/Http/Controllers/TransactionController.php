@@ -127,15 +127,14 @@ class TransactionController extends Controller
      */
     public function update(TransactionRequest $request, $id)
     {
-
         try {                     
-
             $transaction = Transaction::findOrFail($id);
             $request['user_id'] = 1;
             $transaction->update($request->all());
 
             return redirect()->back()->with('success', 'Transaction successfully updated.');
         } catch (Exception $e) {
+            session()->flash('showModal', true);
             session()->flash('error', 'Transaction updated failed');
             return redirect()->back();
         }
