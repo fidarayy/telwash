@@ -25,7 +25,7 @@
                         @endforeach
                     </select>
                     @error('customer_id')
-                        <div class="error-message">
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
@@ -40,7 +40,7 @@
                         id="weight" placeholder="Berat (Kg)" value="{{ old('weight') }}">
 
                     @error('weight')
-                        <div class="error-message">
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
@@ -51,7 +51,7 @@
                     <input type="text" name="price" class="form-control rounded-pill" id="price"
                         placeholder="Harga" value="{{ old('price') }}">
                     @error('price')
-                        <div class="error-message">
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
@@ -64,7 +64,7 @@
                     <input type="datetime-local" name="finished_at" class="form-control" id="finished_at"
                         value="{{ old('finished_at') }}">
                     @error('finished_at')
-                        <div class="error-message">
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
@@ -76,7 +76,7 @@
                     <input type="datetime-local" name="received_at" class="form-control" id="received_at"
                         value="{{ old('received_at') }}">
                     @error('received_at')
-                        <div class="error-message">
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
@@ -96,7 +96,7 @@
                         </option>
                     </select>
                     @error('service_type')
-                        <div class="error-message">
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
@@ -113,7 +113,7 @@
                         <option value="DP" {{ old('payment_status') == 'DP' ? 'selected' : '' }}>DP</option>
                     </select>
                     @error('payment_status')
-                        <div class="error-message">
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
@@ -129,7 +129,7 @@
                         <option value="Satuan" {{ old('unit_type') == 'Satuan' ? 'selected' : '' }}>Satuan</option>
                     </select>
                     @error('unit_type')
-                        <div class="error-message">
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
@@ -146,7 +146,7 @@
                         <option value="Diambil" {{ old('status') == 'Diambil' ? 'selected' : '' }}>Diambil</option>
                     </select>
                     @error('status')
-                        <div class="error-message">
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
@@ -162,7 +162,7 @@
                         </option>
                     </select>
                     @error('payment_method')
-                        <div class="error-message">
+                        <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror

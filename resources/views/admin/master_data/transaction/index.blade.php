@@ -227,7 +227,7 @@
                 .then(data => {
                     // Looping data untuk mengisi input form berdasarkan id
                     const form = document.getElementById('updateForm');
-                    // clearValidationErrors(form);                    
+                    clearValidationErrors(form);                    
                     form.action = `{{ route('admin.master_data.transaction.update', ['id' => 'id']) }}`.replace('id',
                         transactionId);
 
@@ -258,8 +258,7 @@
                 const modal = new bootstrap.Modal(document.getElementById('editModal'));
                 modal.show();
 
-                const form = document.getElementById('updateForm');
-                clearValidationErrors(form);
+                const form = document.getElementById('updateForm');                
                 form.action =
                 `{{ route('admin.master_data.transaction.update', ['id' => session('previousId')]) }}`;
             @endif
