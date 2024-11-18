@@ -1,134 +1,86 @@
-<!-- Modal Edit Data -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+<!-- Modal Edit Voucher -->
+<div class="modal fade" id="editVoucherModal" tabindex="-1" aria-labelledby="editVoucherModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form method="POST" action="" id="updateForm" class="modal-content rounded-3 p-4">
+        <form method="POST" action="{{ route('voucher.update') }}" id="updateVoucherForm" class="modal-content rounded-3 p-4">
             @csrf
+            @method('PUT')
 
             <input type="hidden" value="{{ auth()->user()->id ?? 1 }}" name="user_id">
             <!-- Modal Header -->
             <div class="d-flex align-items-center mb-4">
                 <button type="button" class="btn btn-close me-3" data-bs-dismiss="modal" aria-label="Close"></button>
-                <h1 class="modal-title fs-1 fw-bold text-center w-100" id="editModalLabel">Edit Data</h1>
+                <h1 class="modal-title fs-1 fw-bold text-center w-100" id="editVoucherModalLabel">Edit Voucher</h1>
             </div>
 
             <!-- Modal Body -->
             <div class="modal-body">
-                <span class="ps-2 fs-6">Id Transaksi : <span id="transaction_id"></span></span>
-                <!-- Customer ID Field -->
+                <span class="ps-2 fs-6">Voucher Code: <span id="voucher_code"></span></span>
+                <!-- Code Field -->
                 <div class="mb-3 align-items-center">
-                    <select name="customer_id" class="form-select rounded-pill select" id="customer_id">
-                        <option value="" disabled selected>Pilih Nama Pelanggan</option>
-                        @foreach ($customers as $customer)
-                            <option value="{{ $customer->customer_id }}"
-                                {{ old('customer_id') == $customer->customer_id ? 'selected' : '' }}>
-                                {{ $customer->name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    @error('customer_id')
+                    <input type="text" name="code" class="form-control rounded-pill" id="voucher_code_input" placeholder="Voucher Code" value="{{ old('code') }}">
+                    @error('code')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
                 </div>
 
-
-                <!-- Weight Field -->
+                <!-- Discount Field -->
                 <div class="mb-3 align-items-center">
-                    <input type="number" step="0.01" name="weight"
-                        class="form-control rounded-pill w-10 
-                        @error('weight') is-invalid @enderror"
-                        id="weight" placeholder="Berat (Kg)" value="{{ old('weight') }}">
-
-                    @error('weight')
+                    <input type="number" step="0.01" name="discount" class="form-control rounded-pill" id="discount" placeholder="Discount (%)" value="{{ old('discount') }}">
+                    @error('discount')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
                 </div>
 
-                <!-- Price Field -->
+                <!-- Minimum Transaction Field -->
                 <div class="mb-3 form-group align-items-center">
-                    <input type="text" name="price" class="form-control rounded-pill" id="price"
-                           placeholder="Harga" value="{{ old('price') }}">
-                    @error('price')
+                    <input type="number" name="min_transaction" class="form-control rounded-pill" id="min_transaction" placeholder="Minimum Transaction" value="{{ old('min_transaction') }}">
+                    @error('min_transaction')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
-                </div>                
+                </div>
 
-                <!-- Finished At Field -->
+                <!-- Maximum Discount Field -->
+                <div class="mb-3 align-items-center">
+                    <input type="number" name="max_discount" class="form-control rounded-pill" id="max_discount" placeholder="Maximum Discount" value="{{ old('max_discount') }}">
+                    @error('max_discount')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <!-- Usage Limit Field -->
+                <div class="mb-3 align-items-center">
+                    <input type="number" name="usage_limit" class="form-control rounded-pill" id="usage_limit" placeholder="Usage Limit" value="{{ old('usage_limit') }}">
+                    @error('usage_limit')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <!-- Valid From Field -->
                 <div class="mb-3 input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">Waktu Selesai</span>
-                    <input type="datetime-local" name="finished_at" class="form-control" id="finished_at"
-                        value="{{ old('finished_at') }}">
-                    @error('finished_at')
+                    <span class="input-group-text" id="addon-wrapping">Valid From</span>
+                    <input type="datetime-local" name="valid_from" class="form-control" id="valid_from" value="{{ old('valid_from') }}">
+                    @error('valid_from')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
                 </div>
 
-                <!-- Received At Field -->
+                <!-- Valid Until Field -->
                 <div class="mb-3 input-group flex-nowrap">
-                    <span class="input-group-text" id="addon-wrapping">Diterima</span>
-                    <input type="datetime-local" name="received_at" class="form-control" id="received_at"
-                        value="{{ old('received_at') }}">
-                    @error('received_at')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-
-                <!-- Service Type Field -->
-                <div class="mb-3 d-flex align-items-center input-group">
-                    <span class="input-group-text" id="addon-wrapping">Jenis Layanan</span>
-                    <select class="form-select" name="service_type" id="service_type">
-                        <option value="" disabled selected>Pilih Jenis Layanan</option>
-                        <option value="Cuci Saja" {{ old('service_type') == 'Cuci Saja' ? 'selected' : '' }}>Cuci Saja
-                        </option>
-                        <option value="Cuci Dan Setrika"
-                            {{ old('service_type') == 'Cuci Dan Setrika' ? 'selected' : '' }}>Cuci Dan Setrika</option>
-                        <option value="Express" {{ old('service_type') == 'Express' ? 'selected' : '' }}>Express
-                        </option>
-                    </select>
-                    @error('service_type')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <!-- Payment Status Field -->
-                <div class="mb-3 d-flex align-items-center input-group">
-                    <span class="input-group-text" id="addon-wrapping">Payment Status</span>
-                    <select class="form-select" name="payment_status" id="payment_status">
-                        <option value="" disabled selected>Pilih Payment</option>
-                        <option value="Lunas" {{ old('payment_status') == 'Lunas' ? 'selected' : '' }}>Lunas</option>
-                        <option value="Belum Dibayar" {{ old('payment_status') == 'Belum Dibayar' ? 'selected' : '' }}>
-                            Belum</option>
-                        <option value="DP" {{ old('payment_status') == 'DP' ? 'selected' : '' }}>DP</option>
-                    </select>
-                    @error('payment_status')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <!-- Unit Type Field -->
-                <div class="mb-3 d-flex align-items-center input-group">
-                    <span class="input-group-text" id="addon-wrapping">Unit Type</span>
-                    <select class="form-select" name="unit_type" id="unit_type">
-                        <option value="" disabled selected>Pilih Unit Type</option>
-                        <option value="Kilogram" {{ old('unit_type') == 'Kilogram' ? 'selected' : '' }}>Kilogram
-                        </option>
-                        <option value="Satuan" {{ old('unit_type') == 'Satuan' ? 'selected' : '' }}>Satuan</option>
-                    </select>
-                    @error('unit_type')
+                    <span class="input-group-text" id="addon-wrapping">Valid Until</span>
+                    <input type="datetime-local" name="valid_until" class="form-control" id="valid_until" value="{{ old('valid_until') }}">
+                    @error('valid_until')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -139,29 +91,11 @@
                 <div class="mb-3 d-flex align-items-center input-group">
                     <span class="input-group-text" id="addon-wrapping">Status</span>
                     <select class="form-select" name="status" id="status">
-                        <option value="" disabled selected>Pilih Status</option>
-                        <option value="Diterima" {{ old('status') == 'Diterima' ? 'selected' : '' }}>Diterima</option>
-                        <option value="Diproses" {{ old('status') == 'Diproses' ? 'selected' : '' }}>Diproses</option>
-                        <option value="Selesai" {{ old('status') == 'Selesai' ? 'selected' : '' }}>Selesai</option>
-                        <option value="Diambil" {{ old('status') == 'Diambil' ? 'selected' : '' }}>Diambil</option>
+                        <option value="" disabled selected>Select Status</option>
+                        <option value="Active" {{ old('status') == 'Active' ? 'selected' : '' }}>Active</option>
+                        <option value="Inactive" {{ old('status') == 'Inactive' ? 'selected' : '' }}>Inactive</option>
                     </select>
                     @error('status')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <div class="mb-3 d-flex align-items-center input-group">
-                    <span class="input-group-text" id="addon-wrapping">Payment Method</span>
-                    <select class="form-select" name="payment_method" id="payment_method">
-                        <option value="" disabled selected>Pilih Status</option>
-                        <option value="Cash" {{ old('payment_method') == 'Cash' ? 'selected' : '' }}>Cash</option>
-                        <option value="Qris" {{ old('payment_method') == 'Qris' ? 'selected' : '' }}>Qris</option>
-                        <option value="E_wallet" {{ old('payment_method') == 'E_wallet' ? 'selected' : '' }}>E Wallet
-                        </option>
-                    </select>
-                    @error('payment_method')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -172,7 +106,7 @@
             <!-- Modal Footer -->
             <div class="modal-footer d-flex justify-content-center">
                 <button type="submit" class="btn rounded-pill text-white w-100" style="background-color: #B5A27F;">
-                    Edit
+                    Save Changes
                 </button>
             </div>
         </form>

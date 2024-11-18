@@ -9,10 +9,6 @@ class Voucher extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'code',
-        'discount',
-        'valid_from',
-        'valid_until',
-    ];
+    protected $guarded = [];
+    protected $primaryKey = 'voucher_id';
 }

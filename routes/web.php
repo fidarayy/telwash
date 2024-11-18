@@ -5,9 +5,10 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\TransactionController; 
 use App\Http\Controllers\PickupController;
-use App\Http\Controllers\VoucherController;
+
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\VoucherController;
 use App\Models\Customer;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $edit = true;
     // return view('admin.master_data.transaction.index', compact('customers'));  // Mengarahkan ke halaman login
-    return view('admin.master_data.customers.index');  // Mengarahkan ke halaman login
+    // return view('admin.master_data.customers.index');  // Mengarahkan ke halaman login
+    // return view('admin.master_data.voucher.create');  // Mengarahkan ke halaman login
+    return view('admin.master_data.voucher.index');  // Mengarahkan ke halaman login
     // return view('admin.master_data.customers.management', compact("edit"));  // Mengarahkan ke halaman login
     // return view('dashboard');
     // return view('auth.login');  // Mengarahkan ke halaman login
@@ -43,7 +46,18 @@ Route::get('/', function () {
             Route::post('/{id}/update', action: 'update')->name('update');
             Route::get('/management', 'management')->name('management');
             Route::get('/{id}/edit', 'edit')->name('edit');
-        });       
+        });   
+        
+        Route::controller(VoucherController::class)->prefix('/voucher')->name('voucher.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::post('/store', 'store')->name('store');
+            Route::post('/{id}/update', action: 'update')->name('update');
+            Route::get('/show', 'show')->name('show');
+            Route::get('/{id}/edit', 'edit')->name('edit');
+            Route::delete('/{id}/destroy', action: 'destroy')->name('destroy');
+            Route::get('/{id}/status', action: 'status')->name('status');
+        });
     });
 });
 
@@ -67,12 +81,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pickup', [PickupController::class, 'index'])->name('pickup.index');
 
     // Vouchers
-    Route::get('/vouchers', [VoucherController::class, 'index'])->name('vouchers.index');
-    Route::get('/vouchers/create', [VoucherController::class, 'create'])->name('vouchers.create');
-    Route::post('/vouchers', [VoucherController::class, 'store'])->name('vouchers.store');
-    Route::get('/vouchers/{id}/edit', [VoucherController::class, 'edit'])->name('vouchers.edit');
-    Route::put('/vouchers/{id}', [VoucherController::class, 'update'])->name('vouchers.update');
-    Route::delete('/vouchers/{id}', [VoucherController::class, 'destroy'])->name('vouchers.destroy');
+    // Route::get('/vouchers', [VoucherController::class, 'index'])->name('vouchers.index');
+    // Route::get('/vouchers/create', [VoucherController::class, 'create'])->name('vouchers.create');
+    // Route::post('/vouchers', [VoucherController::class, 'store'])->name('vouchers.store');
+    // Route::get('/vouchers/{id}/edit', [VoucherController::class, 'edit'])->name('vouchers.edit');
+    // Route::put('/vouchers/{id}', [VoucherController::class, 'update'])->name('vouchers.update');
+    // Route::delete('/vouchers/{id}', [VoucherController::class, 'destroy'])->name('vouchers.destroy');
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

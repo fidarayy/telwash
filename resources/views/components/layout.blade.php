@@ -49,7 +49,31 @@
     <!-- SweatAlert JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <!-- DataTables Initialization -->    
+    <!-- DataTables Initialization -->
+    <script>
+        function handleDeleteClick(e) {
+            e.preventDefault(); // Prevent default link behavior
+
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin ingin menghapus?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, hapus!',
+            }).then((result) => {
+                // If the user confirms, find the closest form and submit it
+                if (result.isConfirmed) {
+                    // Find the closest form element and submit it
+                    const form = e.target.closest('form');
+                    if (form) {
+                        form.submit();
+                    }
+                }
+            });
+        }
+    </script>
     @stack('js')
     <!-- SweatAlert JS -->
     @if (session('success'))

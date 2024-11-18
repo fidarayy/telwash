@@ -39,7 +39,7 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
 
-    <form action="{{ route('vouchers.store') }}" method="POST" class="voucher-form">
+    <form action="{{ route('admin.master_data.voucher.store') }}" method="POST" class="voucher-form">
         @csrf
         <div class="mb-3 d-flex align-items-center">
             <label for="code" class="form-label me-3" style="width: 150px;">Kode Voucher</label>

@@ -277,7 +277,7 @@
 
 <x-layout>
     <main class="container-fluid mt-4 main-content">
-    <h1 class="main-title fs-1 fw-bold">History Transaksi</h1>
+    <h1 class="main-title fs-1 fw-bold">History Voucher</h1>
 
         <!-- Custom Controls for DataTable -->
         <div class="d-flex justify-content-between mb-3">
@@ -292,24 +292,7 @@
                 </a>
 
                 <!-- Search Box -->
-                <input type="text" id="customSearchBox" class="form-control form-control-sm" placeholder="Search...">
-
-                <!-- Filter Payment Dropdown -->
-                <select id="paymentFilter" class="form-select form-select-sm">
-                    <option value="">Payment</option>
-                    <option value="Lunas">Lunas</option>
-                    <option value="Belum Dibayar">Belum</option>
-                    <option value="DP">DP</option>
-                </select>
-
-                <!-- Filter Status Dropdown -->
-                <select id="statusFilter" class="form-select form-select-sm">
-                    <option value="">Status</option>
-                    <option value="Diterima">Diterima</option>
-                    <option value="Diproses">Diproses</option>
-                    <option value="Selesai">Selesai</option>
-                    <option value="Diambil">Diambil</option>
-                </select>
+                <input type="text" id="customSearchBox" class="form-control form-control-sm" placeholder="Search...">              
             </div>
 
             <!-- Show Entries Dropdown (DataTable default length dropdown) -->
